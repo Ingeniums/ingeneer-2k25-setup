@@ -152,33 +152,6 @@ def create_folder(service, folder_name, parent_id):
     
     return file.get('id')
 
-def create_folder_path(service, path, parent_id):
-    """Create a folder path with the specified hierarchy under the parent folder."""
-    # Split the path into components
-    path_parts = path.split('/')
-    current_parent_id = parent_id
-    created_path = []
-    
-    for i, part in enumerate(path_parts):
-        if not part:  # Skip empty parts
-            continue
-            
-        # Check if this folder already exists at this level
-        folder_id = find_folder_id(service, part, current_parent_id)
-        
-        if folder_id:
-            print(f"Found existing folder: {'/'.join(created_path + [part])}")
-        else:
-            # Create the folder
-            folder_id = create_folder(service, part, current_parent_id)
-            print(f"Created folder: {'/'.join(created_path + [part])}")
-        
-        # Update parent ID for next iteration
-        current_parent_id = folder_id
-        created_path.append(part)
-    
-    return current_parent_id
-
 def get_folders(paths: list[str]):
     global LEAF_KEY
 
