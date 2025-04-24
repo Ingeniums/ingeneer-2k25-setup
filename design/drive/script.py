@@ -7,6 +7,7 @@ Before creation, it checks for existing folders in the base parent folder and pr
 
 import os
 import argparse
+from typing import Any
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -16,6 +17,7 @@ import pickle
 
 # If modifying these scopes, delete the file token.pickle
 SCOPES = ['https://www.googleapis.com/auth/drive']
+LEAF_KEY = "99709245"
 
 def get_drive_service():
     """Get an authorized Google Drive API service instance."""
@@ -56,6 +58,63 @@ def find_folder_id(service, folder_name, parent_id=None):
     
     files = response.get('files', [])
     return files[0]['id'] if files else None
+
+def create_sharing_link(service, folder_id, link_type='view'):
+    """Create a shareable link for a folder."""
+    # Valid values for role are: 'reader', 'commenter', 'writer', 'fileOrganizer', 'organizer', 'owner'
+    # Valid values for type are: 'user', 'group', 'domain', 'anyone'
+    
+    # First, enable link sharing on the file
+    permission_type = 'anyone'
+    permission_role = 'reader' if link_type == 'view' else 'writer'
+    
+    try:
+        permission = {
+            'type': permission_type,
+            'role': permission_role,
+            'allowFileDiscovery': True
+        }
+        
+        service.permissions().create(
+            fileId=folder_id,
+            body=permission
+        ).execute()
+        
+        # Get the file's metadata to retrieve the web view link
+        file = service.files().get(
+            fileId=folder_id,
+            fields='webViewLink,name'
+        ).execute()
+        
+        return file.get('webViewLink'), file.get('name')
+    
+    except HttpError as error:
+        print(f"An error occurred: {error}")
+        return None, None
+
+def add_email_permission(service, folder_id, email, role='reader', send_notification=False):
+    """Add permission for a specific email address."""
+    # Valid values for role are: 'reader', 'commenter', 'writer', 'fileOrganizer', 'organizer', 'owner'
+    
+    try:
+        user_permission = {
+            'type': 'user',
+            'role': role,
+            'emailAddress': email
+        }
+        
+        service.permissions().create(
+            fileId=folder_id,
+            body=user_permission,
+            sendNotificationEmail=send_notification,
+            fields='id'
+        ).execute()
+        
+        return True
+    
+    except HttpError as error:
+        print(f"An error occurred adding permission for {email}: {error}")
+        return False
 
 def list_folders_in_parent(service, parent_id):
     """List all folders in the specified parent folder."""
@@ -120,6 +179,52 @@ def create_folder_path(service, path, parent_id):
     
     return current_parent_id
 
+def get_folders(paths: list[str]):
+    global LEAF_KEY
+
+    out = {LEAF_KEY: []}
+    for path in paths:
+        path = path.strip("/")
+        parts = path.split("/")
+        if len(parts) == 0:
+            continue
+
+        name = parts[0]
+        if len(parts) == 1:
+            out[LEAF_KEY].append(name)
+            continue
+
+        if name not in out.keys():
+            out[name] = []
+
+        sub = "/".join(parts[1:])
+        out[name].append(sub)
+
+    if len(out) == 0:
+        return {}
+
+    result = {}
+    for k, v in out.items():
+        if k == LEAF_KEY:
+            result[LEAF_KEY] = list(set(out[LEAF_KEY]))
+            continue
+        result[k] = get_folders(v)
+
+    return result
+
+def create_hierarchy(service, folders_dict: dict[Any, Any], parent_id, path = ""):
+    global LEAF_KEY
+    for k, v in folders_dict.items():
+        if k == LEAF_KEY:
+            for name in v:
+                create_folder(service, name, parent_id)
+                print(f"Created {path + '/' if path != '' else ''}{name}")
+            continue
+
+        id = create_folder(service, k, parent_id)
+        create_hierarchy(service, v, id, f'{path + "/" if path != "" else ""}{k}')
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description='Create nested folder hierarchies in Google Drive from a list of paths.')
     parser.add_argument('file', help='File containing folder paths (one per line, format: parent1/parent2/.../final)')
@@ -162,9 +267,11 @@ def main():
             paths = [line.strip() for line in f if line.strip()]
         
         print(f"Creating {len(paths)} folder hierarchies...")
-        for path in paths:
-            final_id = create_folder_path(service, path, parent_id)
-            print(f"Completed folder hierarchy for: {path}")
+        folders = get_folders(paths)
+        create_hierarchy(service, folders, parent_id)
+        # for path in paths:
+        #     final_id = create_folder_path(service, path, parent_id)
+        #     print(f"Completed folder hierarchy for: {path}")
         
         print("Process completed successfully.")
         
