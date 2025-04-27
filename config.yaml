@@ -1,10 +1,10 @@
 # Configuration for team challenges
 teams:
-  - TeamAlpha
-  - TeamBeta
-  - TeamGamma
-  - TeamDelta
-  - TeamEpsilon
+  - TeamAlpha:email1@gmail.com,email2@gmail.com
+  - TeamBeta:email1@gmail.com,email2@gmail.com
+  - TeamGamma:email1@gmail.com,email2@gmail.com
+  - TeamDelta:email1@gmail.com,email2@gmail.com
+  - TeamEpsilon:email1@gmail.com,email2@gmail.com
 
 phases:
   phase1:
