@@ -1,0 +1,26 @@
+# Configuration for team challenges
+teams:
+  - TeamAlpha
+  - TeamBeta
+  - TeamGamma
+  - TeamDelta
+  - TeamEpsilon
+
+phases:
+  phase1:
+    - web-exploitation
+    - cryptography
+    - forensics
+    - binary-analysis
+  
+  phase2:
+    - advanced-web
+    - reverse-engineering
+    - network-security
+    - steganography
+    - privilege-escalation
+  
+  phase3:
+    - final-challenge-1
+    - final-challenge-2
+    - capstone-project

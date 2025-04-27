@@ -59,7 +59,31 @@ def find_folder_id(service, folder_name, parent_id=None):
     files = response.get('files', [])
     return files[0]['id'] if files else None
 
-def create_sharing_link(service, folder_id, link_type='view'):
+def add_email_permission(service, folder_id, email, role='writer', send_notification=False):
+    """Add permission for a specific email address."""
+    # Valid values for role are: 'reader', 'commenter', 'writer', 'fileOrganizer', 'organizer', 'owner'
+    
+    try:
+        user_permission = {
+            'type': 'user',
+            'role': role,
+            'emailAddress': email
+        }
+        
+        service.permissions().create(
+            fileId=folder_id,
+            body=user_permission,
+            sendNotificationEmail=send_notification,
+            fields='id'
+        ).execute()
+        
+        return True
+    
+    except HttpError as error:
+        print(f"An error occurred adding permission for {email}: {error}")
+        return False
+
+def create_sharing_link(service, folder_id, emails: list[str], link_type='write'):
     """Create a shareable link for a folder."""
     # Valid values for role are: 'reader', 'commenter', 'writer', 'fileOrganizer', 'organizer', 'owner'
     # Valid values for type are: 'user', 'group', 'domain', 'anyone'
@@ -85,6 +109,10 @@ def create_sharing_link(service, folder_id, link_type='view'):
             fileId=folder_id,
             fields='webViewLink,name'
         ).execute()
+
+        for email in emails:
+            if not add_email_permission(service, folder_id, email):
+                print(f"Failed to add email: {email}")
         
         return file.get('webViewLink'), file.get('name')
     
@@ -92,29 +120,6 @@ def create_sharing_link(service, folder_id, link_type='view'):
         print(f"An error occurred: {error}")
         return None, None
 
-def add_email_permission(service, folder_id, email, role='reader', send_notification=False):
-    """Add permission for a specific email address."""
-    # Valid values for role are: 'reader', 'commenter', 'writer', 'fileOrganizer', 'organizer', 'owner'
-    
-    try:
-        user_permission = {
-            'type': 'user',
-            'role': role,
-            'emailAddress': email
-        }
-        
-        service.permissions().create(
-            fileId=folder_id,
-            body=user_permission,
-            sendNotificationEmail=send_notification,
-            fields='id'
-        ).execute()
-        
-        return True
-    
-    except HttpError as error:
-        print(f"An error occurred adding permission for {email}: {error}")
-        return False
 
 def list_folders_in_parent(service, parent_id):
     """List all folders in the specified parent folder."""
