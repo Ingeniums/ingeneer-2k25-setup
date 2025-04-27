@@ -242,7 +242,15 @@ def main():
         
         # Read paths from file and create folder hierarchies
         with open(args.file, 'r') as f:
-            paths = [line.strip() for line in f if line.strip()]
+            paths = []
+            # use emails to grant permissions
+            emails = {}
+            for line in f.readlines():
+                line = line.strip()
+                path, team, emails_str = line.split(":")
+                paths.append(path)
+                emails[team] = emails_str.split(",")
+
         
         print(f"Creating {len(paths)} folder hierarchies...")
         folders = get_folders(paths)
