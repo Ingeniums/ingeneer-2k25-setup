@@ -22,6 +22,7 @@ def update_yaml_with_files(yaml_file, dir_path):
         data = {}
     
     data['files'] = file_paths
+    data['type'] = "dynamic"
     
     with open(yaml_file, 'w') as f:
         yaml.safe_dump(data, f, default_flow_style=False)

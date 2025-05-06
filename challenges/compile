@@ -32,11 +32,11 @@ fi
 process_compose () {
     challenge_path="$src/$category/$name"
 
-    echo "Processing $category/$name..."
     if [ ! -e "$challenge_path/challenge/Dockerfile" ]; then
         return
     fi
 
+    echo "Processing compose for $category/$name..."
     out_dir="$out/$category/$name" 
     if [ ! -d "$out_dir" ]; then
         echo "Created $out_dir"
@@ -88,7 +88,7 @@ process_challenge () {
 
     if [ -d "$challenge_path/files" ]; then
         echo "Adding files..."
-        python ./files.py "$out_dir/challenge.yml" "$challenge_path"
+        python ./process.py "$out_dir/challenge.yml" "$challenge_path"
     fi
     
     echo "Generate challenge.yml for $category/$name"
@@ -116,12 +116,15 @@ if [ "$category" != "" ]; then
         process
         exit 0
     fi
+    echo "Processing category $category (provided) ----------------------------------------------------"
     process_category
+    exit 0
 fi
 
 for category in $(ls $src); do
     if [ ! -d "$src/$category" ]; then
         continue
     fi
+    echo "Processing category $category ----------------------------------------------------"
     process_category
 done
