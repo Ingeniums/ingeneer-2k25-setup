@@ -1,0 +1,127 @@
+#!/bin/bash
+
+# general info
+URL="http://localhost"
+HOST="localhost"
+WARMUP=50
+EASY=100
+MEDIUM=200
+HARD=300
+TOUGH=400
+
+origin=$(pwd)
+category="$1"
+name="$2"
+port=30000
+
+# TODO: change to ""
+src="$(pwd)/../../challenges"
+# TODO: change to ""
+out="$(pwd)/ready"
+
+if [ $src = "" ]; then
+    echo "Missing src directory..."
+    exit 1
+fi
+
+if [ $out = "" ]; then
+    echo "Missing out directory..."
+    exit 1
+fi
+
+process_compose () {
+    challenge_path="$src/$category/$name"
+
+    echo "Processing $category/$name..."
+    if [ ! -e "$challenge_path/challenge/Dockerfile" ]; then
+        return
+    fi
+
+    out_dir="$out/$category/$name" 
+    if [ ! -d "$out_dir" ]; then
+        echo "Created $out_dir"
+        mkdir -p $out_dir
+    fi
+
+    compose_path=""
+    if [ -e "$challenge_path/compose.yaml" ]; then
+        compose_path="$challenge_path/compose.yaml"
+    elif [ -e "$challenge_path/docker-compose.yaml" ]; then
+        echo "Renamed docker-compose.yaml to compose.yaml for $category/$name"
+        mv "$challenge_path/docker-compose.yaml" "$challenge_path/compose.yaml"
+        compose_path="$challenge_path/compose.yaml"
+    else
+        compose_path="$origin/compose.yaml.tmpl"
+    fi
+
+    echo "Generated compose file: $out_dir/compose.yaml..."
+    cat $compose_path | sed "s/{{category}}/$category/g" | \
+        sed "s/{{name}}/$name/g" | \
+        sed "s|{{src}}|$challenge_path|g" | \
+        sed "s/{{port}}/$port/g" > "$out_dir/compose.yaml"
+}
+
+process_challenge () {
+    challenge_path="$src/$category/$name"
+    if [ ! -e "$challenge_path/challenge.yml" ]; then
+        echo "Missing challenge.yml for $challenge_path"
+        exit 1
+    fi
+
+    out_dir="$out/$category/$name" 
+    if [ ! -d "$out_dir" ]; then
+        echo "Created $out_dir"
+        mkdir -p $out_dir
+    fi
+
+    echo "Setting parameters..."
+    cat "$challenge_path/challenge.yml" | \
+        sed "s/{{category}}/$category/g" |\
+        sed "s|{{url}}|$URL|g" | \
+        sed "s/{{host}}/$HOST/g" | \
+        sed "s/{{port}}/$PORT/g" | \
+        sed "s/{{warmup}}/$WARMUP/g" | \
+        sed "s/{{easy}}/$EASY/g" | \
+        sed "s/{{medium}}/$MEDIUM/g" | \
+        sed "s/{{hard}}/$HARD/g" | \
+        sed "s/{{tough}}/$TOUGH/g" > "$out_dir/challenge.yml"
+
+    if [ -d "$challenge_path/files" ]; then
+        echo "Adding files..."
+        python ./files.py "$out_dir/challenge.yml" "$challenge_path"
+    fi
+    
+    echo "Generate challenge.yml for $category/$name"
+}
+
+process () {
+    process_challenge
+    process_compose
+}
+
+process_category () {
+    mapfile files < <(find "$src/$category" -maxdepth 1 -type d -printf "%f\n")
+    files=${files[@]:1}
+    for name in "${files[@]:1}"; do
+        name=$(echo $name | tr -d '\n')
+        if [ "$name" == "$category" ]; then
+            continue
+        fi
+        process
+    done
+}
+
+if [ "$category" != "" ]; then
+    if [ "$name" != "" ]; then
+        process
+        exit 0
+    fi
+    process_category
+fi
+
+for category in $(ls $src); do
+    if [ ! -d "$src/$category" ]; then
+        continue
+    fi
+    process_category
+done
