@@ -1,7 +1,7 @@
 attribution: Written by th31rtist
 author: th31rtist
 category: networking
-connection_info: nc localhost
+connection_info: nc localhost 30030
 description: 'In an enchanted network connecting the castles of Hogwarts, students
   were able to communicate and collaborate magically.
 
@@ -14,6 +14,10 @@ description: 'In an enchanted network connecting the castles of Hogwarts, studen
   school can return to its normal magical harmony.
 
   '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Lost-Artifacts/files/Challenge2.pkt
 flags:
@@ -26,6 +30,5 @@ tags:
 - easy
 - th31rtist
 - networking
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

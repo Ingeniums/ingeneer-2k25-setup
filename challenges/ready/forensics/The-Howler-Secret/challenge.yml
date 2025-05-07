@@ -5,6 +5,10 @@ description: 'A mysterious Howler was sent to a Hogwarts student, but instead of
   loud message, it arrived suspiciously... silent.
 
   '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/forensics/The-Howler-Secret/files/howler.jpg
 flags:
@@ -15,6 +19,5 @@ tags:
 - easy
 - '{sirmoncef}'
 - forensics
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

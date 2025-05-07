@@ -3,6 +3,10 @@ author: Dahoun Manel
 category: design
 description: "The Marauder\u2019s Map has been damaged. Use Reparo to piece it back\
   \ together!\n"
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/Reparo/files/piece3.png
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/Reparo/files/piece2.png
@@ -23,6 +27,5 @@ topics:
 - photoshop
 - figma
 - illustrator
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

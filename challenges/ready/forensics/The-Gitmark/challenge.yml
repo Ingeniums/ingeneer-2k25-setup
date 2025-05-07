@@ -4,6 +4,10 @@ category: forensics
 description: 'You Know What To DO . when u find the piece put it in 1ng3neer2k25{}
 
   '
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/forensics/The-Gitmark/files/gitchall.zip
 flags:
@@ -14,6 +18,5 @@ tags:
 - medium
 - '{sirmoncef}'
 - forensics
-type: standard
-value: 200
+type: dynamic
 version: '0.1'

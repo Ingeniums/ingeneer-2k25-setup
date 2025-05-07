@@ -11,6 +11,10 @@ description: 'Deep within Hogwarts'' Chamber of Networks everything runs magical
   Claim your victory with the flag: `1ng3neer2k25{attack_name}`
 
   '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Sorting-Router/files/ChallThree.pkt
 flags:
@@ -21,6 +25,5 @@ tags:
 - easy
 - the1rtist
 - networking
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

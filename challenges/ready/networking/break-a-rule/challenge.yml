@@ -5,6 +5,10 @@ description: 'You are in PC1(you use linux btw), what''s one command you could t
   to talk to the other pc who has ip address 192.168.1.12 despite the barrier?
 
   '
+extra:
+  decay: 15
+  initial: 300
+  minimum: 60
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/break-a-rule/files/conf.txt
 flags:
@@ -15,6 +19,5 @@ tags:
 - hard
 - th31rtist
 - networking
-type: standard
-value: 300
+type: dynamic
 version: '0.1'

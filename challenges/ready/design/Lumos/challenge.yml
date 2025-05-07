@@ -5,6 +5,10 @@ description: 'A dark charm has clouded this image. Use the Lumos charm to bring 
   back into the light.
 
   '
+extra:
+  decay: 2.5
+  initial: 50
+  minimum: 10
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/Lumos/files/lumos.webp
 hints:
@@ -17,6 +21,5 @@ tags:
 - design
 topics:
 - design
-type: standard
-value: 50
+type: dynamic
 version: '0.1'

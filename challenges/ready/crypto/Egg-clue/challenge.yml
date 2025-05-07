@@ -5,9 +5,10 @@ description: "If you look down at those golden eggs you\u2019re all holding, you
   \ see that they open ...\nsee the hinges there? You need to solve the clue inside\
   \ the egg \u2014 because it will tell you what the second task is,\nand enable you\
   \ to prepare for it!\n"
-files:
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Egg-clue/files/output.txt
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Egg-clue/files/chall.py
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
 - content: 1ng3neer2k25{d1d_u_d3f3r_th3_0v4t3_clu3}
   type: static
@@ -17,6 +18,5 @@ tags:
 - easy
 - Yasser
 - crypto
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

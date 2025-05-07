@@ -1,23 +1,33 @@
-name: "The Switch of Secrets"
-author: "th31rtist"
+attribution: Written by th31rtist
+author: th31rtist
 category: networking
-description: |
-  A magical artifact hides in plain sight among Hogwarts' network devices.
+connection_info: nc localhost 30032
+description: 'A magical artifact hides in plain sight among Hogwarts'' network devices.
+
   The secret lies not in spells or runes, but in what the device itself reveals.
-  Note: netcat to the shell and type the right command to see the result you want "type commands fully without abbreviations".
-  For each network device, you can access and configure a view I created called 'participant'.
-  When you enter a network device, type "enable view participant" and use the password "SuperStrongPassword".
-value: 100
-type: standard
+
+  Note: netcat to the shell and type the right command to see the result you want
+  "type commands fully without abbreviations".
+
+  For each network device, you can access and configure a view I created called ''participant''.
+
+  When you enter a network device, type "enable view participant" and use the password
+  "SuperStrongPassword".
+
+  '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
-  - 1ng3neer2k25{magic_wand_spell}
+- 1ng3neer2k25{magic_wand_spell}
 hints:
-  - "Interfaces speak when properly questioned. What do their mundane details whisper?"
-connection_info: nc localhost 
-tags:
-  - easy
-  - th31rtist
-  - networking
-attribution: "Written by th31rtist"
+- Interfaces speak when properly questioned. What do their mundane details whisper?
+name: The Switch of Secrets
 state: hidden
-version: "0.1"
+tags:
+- easy
+- th31rtist
+- networking
+type: dynamic
+version: '0.1'

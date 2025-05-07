@@ -6,9 +6,10 @@ description: "The Death Eaters left behind a cursed cipher, said to be used by t
   \ magic and sealed with twisted MD5 incantations.\n\u201COnly those who can wield\
   \ Dark Magic can break it,\u201D they claimed.\nProve them wrong \u2014 decipher\
   \ the curse and recover the hidden message.\n"
-files:
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Karkaroffs-Curse/files/output.txt
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Karkaroffs-Curse/files/chall.sage
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
 - content: 1ng3neer2k25{y0u_m4st3r3d_d4rk_m4g1c}
   type: static
@@ -18,6 +19,5 @@ tags:
 - easy
 - Yasser
 - crypto
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

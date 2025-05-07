@@ -4,6 +4,10 @@ category: networking
 description: 'Can you retrieve the secret?
 
   '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Forgotten-spell/files/Challenge.pkt
 flags:
@@ -16,6 +20,5 @@ tags:
 - easy
 - th31rtist
 - networking
-type: standard
-value: 100
+type: dynamic
 version: '0.1'

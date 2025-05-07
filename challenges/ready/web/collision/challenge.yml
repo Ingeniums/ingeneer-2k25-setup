@@ -1,17 +1,21 @@
-name: Collision
-author: "{sirmoncef}"
-category: web
-description: |
-  Can you reveal the flag?
 attribution: Written by [sirmoncef](https://sirmoncef.github.io/)
-value: 100
-connection_info: "http://localhost:"
-type: standard
+author: '{sirmoncef}'
+category: web
+connection_info: http://localhost:30037
+description: 'Can you reveal the flag?
+
+  '
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
-  - 1ng3neer2k25{e5931290587f55ef75ed8494efb425fc}
-tags:
-  - easy
-  - "{sirmoncef}"
-  - web
+- 1ng3neer2k25{e5931290587f55ef75ed8494efb425fc}
+name: Collision
 state: hidden
-version: "0.1"
+tags:
+- easy
+- '{sirmoncef}'
+- web
+type: dynamic
+version: '0.1'

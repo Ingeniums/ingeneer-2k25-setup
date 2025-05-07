@@ -4,9 +4,10 @@ category: crypto
 description: 'proved by Hasse
 
   '
-files:
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/trace/files/output.txt
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/trace/files/chall.py
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 flags:
 - content: 1ng3neer2k25{br34ch3d_th3_tr4c3}
   type: static
@@ -16,6 +17,5 @@ tags:
 - medium
 - Yasser
 - crypto
-type: standard
-value: medium
+type: dynamic
 version: '0.1'

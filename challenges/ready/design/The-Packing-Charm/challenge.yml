@@ -5,6 +5,10 @@ description: 'Pages from an enchanted tome have been scrambled by a mischievous 
   Nothing is where it should be, yet every piece yearns to return home.
 
   '
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/puzzle.png
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/p2.png
@@ -21,6 +25,5 @@ tags:
 - design
 topics:
 - design
-type: standard
-value: 200
+type: dynamic
 version: '0.1'

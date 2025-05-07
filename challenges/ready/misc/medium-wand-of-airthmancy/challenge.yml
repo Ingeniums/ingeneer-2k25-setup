@@ -1,20 +1,25 @@
-name: Wand Of Airthmancy
+attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
 author: 1nitramfs
 category: misc
-description: |
-  High atop the Astronomy Tower, a whisper floats on enchanted air currents—an ancient spell, known only to those who study Arithmancy and elemental magics. The wind carries only certain runes, and only the right incantation will bend it to your will. Can you shape a charm the air will accept... and reveal what lies beyond?
-attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
-value: 200
-type: standard
-connection_info: nc localhost 
+connection_info: nc localhost 30027
+description: "High atop the Astronomy Tower, a whisper floats on enchanted air currents\u2014\
+  an ancient spell, known only to those who study Arithmancy and elemental magics.\
+  \ The wind carries only certain runes, and only the right incantation will bend\
+  \ it to your will. Can you shape a charm the air will accept... and reveal what\
+  \ lies beyond?\n"
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 flags:
-    - {
-        type: "static",
-        content: "1ng3neer2k25{And_7heN_7H3rE_WeRE_None}",
-    }
-tags:
-  - misc
-  - pyjail
-  - 1nitramfs
+- content: 1ng3neer2k25{And_7heN_7H3rE_WeRE_None}
+  type: static
+name: Wand Of Airthmancy - Medium
 state: hidden
-version: "0.1"
+tags:
+- medium
+- misc
+- pyjail
+- 1nitramfs
+type: dynamic
+version: '0.1'

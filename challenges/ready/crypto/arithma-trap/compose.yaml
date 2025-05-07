@@ -1,7 +1,0 @@
-
-services:
-  crypto_arithma-trap:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/arithma-trap/challenge"
-    ports:
-      - "30000:8080"

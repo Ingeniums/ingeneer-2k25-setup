@@ -1,7 +1,6 @@
 attribution: Written by koyphshi
 author: Yasser
 category: crypto
-challenge_name: Parseltongue Backdoor
 description: "Greetings, Harry Potter!  \nWe\u2019ve been waiting for you.  \n\nHidden\
   \ in this enchanted forest are magical challenges crafted just for *The Boy Who\
   \ Lived*.  \nBut beware \u2014 dark forces stir, and impostors wield forbidden spells\
@@ -11,15 +10,17 @@ description: "Greetings, Harry Potter!  \nWe\u2019ve been waiting for you.  \n\n
   \  \n\nDecipher its meaning to unlock the path.  \n\nOnly then will the forest yield\
   \ to you.  \n"
 difficulty: warmup
-files:
-- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Parseltongue-Backdoor/files/chall.py
+extra:
+  decay: 2.5
+  initial: 50
+  minimum: 10
 flags:
 - 1ng3neer2k25{you_conquered_Parseltongue_coils}
+name: Parseltongue Backdoor
 state: hidden
 tags:
 - warmup
 - Yasser
 - crypto
-type: standard
-value: warmup
+type: dynamic
 version: '0.1'

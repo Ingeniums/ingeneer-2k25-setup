@@ -1,7 +1,7 @@
 attribution: Written by th31rtist
 author: th31rtist
 category: networking
-connection_info: nc localhost
+connection_info: nc localhost 30028
 description: 'Harry wants to talk with Hermione, but there is a strong barrier preventing
   them from talking.
 
@@ -11,6 +11,10 @@ description: 'Harry wants to talk with Hermione, but there is a strong barrier p
   Note: both harry and hermione must stay in their private rooms :)
 
   '
+extra:
+  decay: 15
+  initial: 300
+  minimum: 60
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/Escape-the-law/files/Topology.png
 flags:
@@ -21,6 +25,5 @@ tags:
 - hard
 - th31rtist
 - networking
-type: standard
-value: 300
+type: dynamic
 version: '0.1'

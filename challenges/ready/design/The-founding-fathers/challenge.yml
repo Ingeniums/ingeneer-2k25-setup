@@ -1,18 +1,23 @@
-name: The founding fathers
+attribution: Written by pr0metheu5
 author: Mountassar
 category: design
-description: |
-  On the founding father day, you have been tasked by Professor McGonagall to design a complete visual branding identity for the original four Hogwarts founders — Godric Gryffindor, 
-  Helga Hufflepuff, Rowena Ravenclaw, and Salazar Slytherin — as if they were legendary houses or brands 
-  in a mythical magical universe. ancient luxury meets medieval magic — each house must feel like a timeless, 
-  mythical brand, each rooted in its unique values. You are only allowed to use Adobe Illustrator as a tool, no ai or generated backgrounds are allowed, 
-  you must also create a new full color palette for each house
-value: 400
-type: dynamic
-tags:
-  - tough
-  - Mountassar
-  - design
+description: "On the founding father day, you have been tasked by Professor McGonagall\
+  \ to design a complete visual branding identity for the original four Hogwarts founders\
+  \ \u2014 Godric Gryffindor, \nHelga Hufflepuff, Rowena Ravenclaw, and Salazar Slytherin\
+  \ \u2014 as if they were legendary houses or brands \nin a mythical magical universe.\
+  \ ancient luxury meets medieval magic \u2014 each house must feel like a timeless,\
+  \ \nmythical brand, each rooted in its unique values. You are only allowed to use\
+  \ Adobe Illustrator as a tool, no ai or generated backgrounds are allowed, \nyou\
+  \ must also create a new full color palette for each house\n"
+extra:
+  decay: 20
+  initial: 400
+  minimum: 80
+name: The founding fathers
 state: hidden
-version: "0.1"
-attribution: Written by pr0metheu5
+tags:
+- tough
+- Mountassar
+- design
+type: dynamic
+version: '0.1'

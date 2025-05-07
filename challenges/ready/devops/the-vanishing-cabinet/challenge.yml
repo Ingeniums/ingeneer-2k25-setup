@@ -1,17 +1,21 @@
-name: "The Vanishing Cabinet"
-author: "1nitramfs"
-category: devops
-description: |
-  Deep within the forgotten corridors of Hogwarts lies a [Vanishing Cabinet](https://hub.docker.com/repository/docker/1nitramfs/the-vanishing-cabinet), once used by students to sneak between rooms... and dimensions. But this one is different. Anything placed inside it vanishes forever—or so it seems. 
 attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
-value: 100
-type: dynamic
+author: 1nitramfs
+category: devops
+description: "Deep within the forgotten corridors of Hogwarts lies a [Vanishing Cabinet](https://hub.docker.com/repository/docker/1nitramfs/the-vanishing-cabinet),\
+  \ once used by students to sneak between rooms... and dimensions. But this one is\
+  \ different. Anything placed inside it vanishes forever\u2014or so it seems. \n"
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
-    - 1ng3neer2k25{m15ch13f_m4n463d_bu7_n07_f0r60773n}
-tags:
-    - devops
-    - 1nitramfs
-    - docker
-    - easy
+- 1ng3neer2k25{m15ch13f_m4n463d_bu7_n07_f0r60773n}
+name: The Vanishing Cabinet
 state: hidden
-version: "0.1"
+tags:
+- devops
+- 1nitramfs
+- docker
+- easy
+type: dynamic
+version: '0.1'

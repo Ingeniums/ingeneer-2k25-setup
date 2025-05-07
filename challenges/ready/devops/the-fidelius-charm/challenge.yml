@@ -5,6 +5,10 @@ description: "Neville Longbottom attempted to secure a vital flag with a Digital
   \ in the Main service,\nbut something isn't quite right \u2013 the necessary resources\
   \ from the Caller service aren't making it through.\nCan you provide the Main service\
   \ with the necessary resources and retrieve the hidden flag?\n"
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/devops/the-fidelius-charm/files/inspect.json
 flags:
@@ -21,6 +25,5 @@ topics:
 - devops
 - docker
 - compose
-type: standard
-value: 200
+type: dynamic
 version: '0.1'

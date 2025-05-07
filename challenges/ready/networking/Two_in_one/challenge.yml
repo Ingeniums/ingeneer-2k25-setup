@@ -6,6 +6,10 @@ description: 'Harry is a great wizard, but sometimes he forgets to do important 
   It''s okey, even if you find it you can''t do anything with it, Can you ?
 
   '
+extra:
+  decay: 10
+  initial: 200
+  minimum: 40
 files:
 - /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/Two_in_one/files/file.pkt
 flags:
@@ -19,6 +23,5 @@ tags:
 - medium
 - th31rtist
 - networking
-type: standard
-value: 200
+type: dynamic
 version: '0.1'

@@ -1,27 +1,25 @@
-name: The ArithmaTrap
+attribution: Written by koyphshi
 author: Yasser
 category: crypto
-description: |
-  Ah, Percy Weasley... you want the secret?
-  Too bad—it's hidden deep inside The ArithmaTrap.
-  An ancient number game with just one way out.
-  
-  You’ll need sharp eyes, fast thinking, and maybe a bit of luck (or a wand).
-  The numbers are waiting.
-  After all , we are Weasleys' Wizard Wheezes.
-
-value: 50
-connection_info: nc localhost 
-type: dynamic
+connection_info: nc localhost 30000
+description: "Ah, Percy Weasley... you want the secret?\nToo bad\u2014it's hidden\
+  \ deep inside The ArithmaTrap.\nAn ancient number game with just one way out.\n\n\
+  You\u2019ll need sharp eyes, fast thinking, and maybe a bit of luck (or a wand).\n\
+  The numbers are waiting.\nAfter all , we are Weasleys' Wizard Wheezes.\n"
+extra:
+  decay: 2.5
+  initial: 50
+  minimum: 10
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/arithma-trap/files/FLAG.py
 flags:
-  - {
-      type: "static",
-      content: "1ng3neer2k25{Ah_Percy_IG_You_Was_Extremely_Serious_This_Time_As_Usual}"
-    }
-tags:
-  - warmup 
-  - Yasser
-  - crypto
+- content: 1ng3neer2k25{Ah_Percy_IG_You_Was_Extremely_Serious_This_Time_As_Usual}
+  type: static
+name: The ArithmaTrap
 state: hidden
-version: "0.1"
-attribution: Written by koyphshi
+tags:
+- warmup
+- Yasser
+- crypto
+type: dynamic
+version: '0.1'

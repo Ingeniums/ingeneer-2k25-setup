@@ -1,17 +1,22 @@
-name: Head Curator
+attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
 author: 1nitramfs
 category: web
-description: |
-  Your discovery in the House of Spells led you to a sealed ledger tucked behind a shifting bookcase — a record of magical artifacts recently "submitted" to the castle's archives. Curiously, the entries weren't logged by professors, but by the Head Curator.
-attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
-value: 100
-type: standard
-connection_info: "http://localhost:"
+connection_info: http://localhost:30038
+description: "Your discovery in the House of Spells led you to a sealed ledger tucked\
+  \ behind a shifting bookcase \u2014 a record of magical artifacts recently \"submitted\"\
+  \ to the castle's archives. Curiously, the entries weren't logged by professors,\
+  \ but by the Head Curator.\n"
+extra:
+  decay: 5
+  initial: 100
+  minimum: 20
 flags:
-  - 1ng3neer2k25{Y4ml_Y0uR_w4y_1n}
-tags:
-  - web
-  - easy
-  - 1nitramfs
+- 1ng3neer2k25{Y4ml_Y0uR_w4y_1n}
+name: Head Curator
 state: hidden
-version: "0.1"
+tags:
+- web
+- easy
+- 1nitramfs
+type: dynamic
+version: '0.1'
