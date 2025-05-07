@@ -1,0 +1,36 @@
+#!/bin/bash
+
+origin="$(pwd)"
+path="$1"
+if [ "$1" = "" ]; then
+    path="."
+fi
+
+echo "Cloning repository to $path/CTFd..."
+git clone https://github.com/CTFd/CTFd.git "$path/CTFd"
+
+echo "Change the secret:"
+tr -dc A-Za-z0-9 < /dev/urandom | head -c 64; echo
+read -p "Continue?: "
+
+echo "Change database secrets"
+read -p "Continue?: "
+
+echo "Loading docker compose configuration..."
+cd $path/CTFd
+rm docker-compose.yml
+cp $origin/docker-compose.yml .
+
+echo "Starting platform..."
+docker compose up --build -d
+
+echo "Have you set the teams.json and users.json files?"
+read -p "Continue?: "
+
+echo "Creating platform configuration..."
+cd -
+cd ./config/
+zip -qr setup.zip db uploads
+cd ..
+echo "Setup is in: $(pwd)/config/setup.zip"
+

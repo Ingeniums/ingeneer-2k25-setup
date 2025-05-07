@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "results": [
+    {
+      "id": 1,
+      "oauth_id": null,
+      "name": "Test",
+      "email": "test@gmail.com",
+      "password": "$bcrypt-sha256$v=2,t=2b,r=12$Tr.3.hR0PPsIiTKYufpgz.$8nWasVDZe686Lo6V3oDmulQTYQaCqoO",
+      "secret": null,
+      "website": null,
+      "affiliation": null,
+      "country": null,
+      "hidden": 0,
+      "banned": 0,
+      "created": "2025-05-04T06:02:46.430314",
+      "captain_id": null,
+      "bracket_id": null
+    }
+  ],
+  "meta": {}
+}

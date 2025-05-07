@@ -1,0 +1,25 @@
+{
+  "count": 1,
+  "results": [
+    {
+      "id": 2,
+      "oauth_id": null,
+      "name": "test",
+      "password": "$bcrypt-sha256$v=2,t=2b,r=12$66Kfs1WSKolkPCMnFZrPY.$foC7dswtB1E69VkuFjICo7QSPLraIhi",
+      "email": "test@gmail.com",
+      "type": "user",
+      "secret": null,
+      "website": null,
+      "affiliation": null,
+      "country": null,
+      "hidden": 0,
+      "banned": 0,
+      "verified": 0,
+      "team_id": 1,
+      "created": "2025-05-04T06:11:30.027762",
+      "language": null,
+      "bracket_id": null
+    }
+  ],
+  "meta": {}
+}

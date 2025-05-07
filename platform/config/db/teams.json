@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "results": [
+    {
+      "id": 1,
+      "oauth_id": null,
+      "name": "authors",
+      "email": "ingeniums@esi-sba.dz",
+      "password": "$bcrypt-sha256$v=2,t=2b,r=12$hDWpYn.51zZKj6G3W3Z6fO$vmWqdNaqpYJenEmAK7b2W0lvsIwUOb6",
+      "secret": null,
+      "website": null,
+      "affiliation": null,
+      "country": null,
+      "hidden": 1,
+      "banned": 0,
+      "created": "2025-05-04T06:04:17.850926",
+      "captain_id": null,
+      "bracket_id": null
+    }
+  ],
+  "meta": {}
+}
