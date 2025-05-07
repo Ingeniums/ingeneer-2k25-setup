@@ -1,0 +1,7 @@
+
+services:
+  web_collision:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/web/collision/challenge"
+    ports:
+      - "30037:8080"

@@ -1,0 +1,7 @@
+
+services:
+  web_room_of_requirement:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/web/room_of_requirement/challenge"
+    ports:
+      - "30041:5000"

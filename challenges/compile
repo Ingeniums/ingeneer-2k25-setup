@@ -32,7 +32,7 @@ fi
 process_compose () {
     challenge_path="$src/$category/$name"
 
-    if [ ! -e "$challenge_path/challenge/Dockerfile" ]; then
+    if [ ! -e "$challenge_path/challenge/Dockerfile" ] && [ ! -f "$challenge_path/docker-compose.yaml.tmpl" ] && [ ! -f "$challenge_path/compose.yaml.tmpl" ]; then
         return
     fi
 
@@ -44,12 +44,10 @@ process_compose () {
     fi
 
     compose_path=""
-    if [ -e "$challenge_path/compose.yaml" ]; then
-        compose_path="$challenge_path/compose.yaml"
-    elif [ -e "$challenge_path/docker-compose.yaml" ]; then
-        echo "Renamed docker-compose.yaml to compose.yaml for $category/$name"
-        mv "$challenge_path/docker-compose.yaml" "$challenge_path/compose.yaml"
-        compose_path="$challenge_path/compose.yaml"
+    if [ -e "$challenge_path/compose.yaml.tmpl" ]; then
+        compose_path="$challenge_path/compose.yaml.tmpl"
+    elif [ -e "$challenge_path/docker-compose.yaml.tmpl" ]; then
+        compose_path="$challenge_path/docker-compose.yaml.tmpl"
     else
         compose_path="$origin/compose.yaml.tmpl"
     fi
@@ -63,7 +61,7 @@ process_compose () {
 
 process_challenge () {
     challenge_path="$src/$category/$name"
-    if [ ! -e "$challenge_path/challenge.yml" ]; then
+    if [ ! -f "$challenge_path/challenge.yml" ]; then
         echo "Missing challenge.yml for $challenge_path"
         exit 1
     fi
@@ -97,6 +95,7 @@ process_challenge () {
 process () {
     process_challenge
     process_compose
+    port=$(( port + 1 ))
 }
 
 process_category () {
@@ -121,6 +120,7 @@ if [ "$category" != "" ]; then
     exit 0
 fi
 
+rm -r $out/*
 for category in $(ls $src); do
     if [ ! -d "$src/$category" ]; then
         continue

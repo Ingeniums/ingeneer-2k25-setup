@@ -21,6 +21,6 @@ topics:
 - devops
 - docker
 - compose
-type: dynamic
+type: standard
 value: 200
 version: '0.1'

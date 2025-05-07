@@ -1,0 +1,23 @@
+attribution: Written by koyphshi
+author: Yasser
+category: crypto
+description: 'Is this all real? Or has this been happening inside my head?
+
+  '
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Forbidden-Forest/files/whisper.txt
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Forbidden-Forest/files/y_vector.txt
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Forbidden-Forest/files/chall.py
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Forbidden-Forest/files/x_vector.txt
+flags:
+- content: 1ng3neer2k25{1T_w4s_l1ke_th3_F0rb1dd3n_F0r3st_4FT3R_4LL}
+  type: static
+name: The Forbidden Forest
+state: hidden
+tags:
+- easy
+- Yasser
+- crypto
+type: standard
+value: 100
+version: '0.1'

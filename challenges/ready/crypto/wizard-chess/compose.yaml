@@ -1,0 +1,7 @@
+
+services:
+  crypto_wizard-chess:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/wizard-chess/challenge"
+    ports:
+      - "30003:8080"

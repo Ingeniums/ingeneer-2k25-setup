@@ -1,0 +1,24 @@
+name: Pensieve Dump
+author: "{sirmoncef}"
+category: forensics
+description: |
+  Some things linger in the air…
+type: dynamic
+value: 300
+extra:
+  initial: 300
+  decay: 10
+  minimum: 10
+flags:
+  - {
+      type: "static",
+      content: "1ng3neer2k25{74379d8de77aa4adc43cedfc248d6800}",
+    }
+tags:
+  - hard
+  - "{sirmoncef}"
+  - forensics
+  - Memory forensics
+state: hidden
+version: "0.1"
+attribution: Written by [{sirmoncef}](https://sirmoncef.github.io/)

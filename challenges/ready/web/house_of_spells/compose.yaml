@@ -1,0 +1,7 @@
+
+services:
+  web_house_of_spells:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/web/house_of_spells/challenge"
+    ports:
+      - "30040:5000"

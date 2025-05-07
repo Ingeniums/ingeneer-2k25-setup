@@ -1,0 +1,7 @@
+
+services:
+  misc_medium-wand-of-airthmancy:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/misc/medium-wand-of-airthmancy/challenge"
+    ports:
+      - "30027:4000"

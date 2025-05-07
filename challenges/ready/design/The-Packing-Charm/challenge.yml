@@ -1,0 +1,26 @@
+attribution: Written by M4n3l(https://ctfd.io)
+author: Dahoun Manel
+category: design
+description: 'Pages from an enchanted tome have been scrambled by a mischievous charm.
+  Nothing is where it should be, yet every piece yearns to return home.
+
+  '
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/puzzle.png
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/p2.png
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/p3.png
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/The-Packing-Charm/files/p1.png
+hints:
+- "The fragments remember where they belong\u2014look closely at borders, colors,\
+  \ and hidden connections."
+name: The Packing Charm
+state: hidden
+tags:
+- medium
+- Dahoun Manel
+- design
+topics:
+- design
+type: standard
+value: 200
+version: '0.1'

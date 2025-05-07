@@ -1,0 +1,20 @@
+attribution: Written by [{sirmoncef}](https://sirmoncef.github.io/)
+author: '{sirmoncef}'
+category: forensics
+description: 'A mysterious Howler was sent to a Hogwarts student, but instead of a
+  loud message, it arrived suspiciously... silent.
+
+  '
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/forensics/The-Howler-Secret/files/howler.jpg
+flags:
+- 1ng3neer2k25{h0wl3r_s3cr3t}
+name: The Howler Secret
+state: hidden
+tags:
+- easy
+- '{sirmoncef}'
+- forensics
+type: standard
+value: 100
+version: '0.1'

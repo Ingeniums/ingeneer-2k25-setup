@@ -1,0 +1,23 @@
+attribution: Written by M4n3l(https://ctfd.io)
+author: Dahoun Manel
+category: design
+description: 'A dark charm has clouded this image. Use the Lumos charm to bring it
+  back into the light.
+
+  '
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/Signum-Revelio/files/signature.jpg
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/design/Signum-Revelio/files/letter.jpg
+hints:
+- "Light alone is not enough\u2014bring back the colors too."
+name: Lumos
+state: hidden
+tags:
+- warmup
+- Dahoun Manel
+- design
+topics:
+- design
+type: standard
+value: 50
+version: '0.1'

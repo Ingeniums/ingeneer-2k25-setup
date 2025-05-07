@@ -1,0 +1,7 @@
+
+services:
+  networking_Escape-the-law:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/Escape-the-law/challenge"
+    ports:
+      - "30028:1234"

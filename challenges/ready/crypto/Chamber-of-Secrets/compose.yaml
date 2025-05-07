@@ -1,0 +1,7 @@
+
+services:
+  crypto_Chamber-of-Secrets:
+    build:
+      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/crypto/Chamber-of-Secrets/challenge"
+    ports:
+      - "30006:8080"

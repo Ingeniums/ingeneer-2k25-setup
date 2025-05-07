@@ -1,0 +1,26 @@
+attribution: Written by the1rtist
+author: th31rtist
+category: networking
+description: 'Deep within Hogwarts'' Chamber of Networks everything runs magically.
+
+  But dark wizards whisper of a way to drain its magic.
+
+  Discover how the dark wizards accomplish this attack so we can protect the castle''s
+  network.
+
+  Claim your victory with the flag: `1ng3neer2k25{attack_name}`
+
+  '
+files:
+- /home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Sorting-Router/files/ChallThree.pkt
+flags:
+- 1ng3neer2k25{dhcp_starvation}
+name: The Sorting Hat
+state: hidden
+tags:
+- easy
+- the1rtist
+- networking
+type: standard
+value: 100
+version: '0.1'

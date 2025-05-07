@@ -1,0 +1,17 @@
+name: Room of Requirement
+author: 1nitramfs
+category: web
+description: |
+  Hogwarts has created a new web application for students to practice their spells. The Room of Requirement, as always, provides exactly what you need - if you know how to ask for it.
+value: 300
+type: standard
+connection_info: "http://localhost:"
+flags:
+  - 1ng3neer2k25{Wh0_kn3w_f$triNgs_w3r3_tH1s_DaNg3r0us}
+tags:
+  - web
+  - hard
+  - 1nitramfs
+state: hidden
+version: "0.1"
+attribution: Written by [1nitramfs](https://github.com/Mehloul-Mohamed/)
