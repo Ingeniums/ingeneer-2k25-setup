@@ -1,0 +1,58 @@
+
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    networks:
+      - runner
+    hostname: rabbitmq # Set a predictable hostname for the feeder to connect to
+    ports:
+      - "5672:5672" # Standard AMQP port
+      - "15672:15672" # Management UI port (optional, but useful for monitoring)
+    environment:
+      # Default user and password for RabbitMQ
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - ../data/:/var/lib/rabbitmq/mnesia
+
+  feeder:
+    build: .
+    depends_on:
+      - rabbitmq
+    networks:
+      - runner
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+
+      TASK_QUEUE: execution_tasks
+      RESULTS_QUEUE: execution_results
+
+      PISTON_URL: http://piston:2000
+
+      DEFAULT_MEMORY_LIMIT: 128
+      DEFAULT_COMPILE_TIMEOUT: 10000
+      DEFAULT_RUN_TIMEOUT: 10000
+
+    restart: on-failure
+
+  piston:
+    image: ghcr.io/engineer-man/piston
+    container_name: piston
+    restart: always
+    privileged: true
+    networks:
+      - runner
+    ports:
+      - 2000
+    volumes:
+      - ../piston/data/piston/packages:/piston/packages
+    tmpfs:
+      - /tmp:exec
+
+networks:
+  runner:
