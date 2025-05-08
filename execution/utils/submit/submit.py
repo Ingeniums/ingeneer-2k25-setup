@@ -5,7 +5,8 @@ import sys
 import logging
 import argparse
 
-SCHEDULER_URL = os.getenv("SCHEDULER_URL", "http://localhost:8001/submit")
+# SCHEDULER_URL = os.getenv("SCHEDULER_URL", "http://localhost:8000/submit")
+SCHEDULER_URL = os.getenv("SCHEDULER_URL", "http://192.168.100.11:8000/submit")
 
 SETTINGS = "gAAAAABoHI0pQgyPwdtbIsCy2aDVePuFmeUy_HaFeKbJ-tHfiIKkyF0LH_NSy253_QTvg4oAM1JP2vUGFvRcwfaJfbeWB5741UEaHunnO2d3Bk4bAnbbkts="
 

@@ -7,8 +7,8 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY scheduler_service.py .
+COPY scheduler.py .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "scheduler_service:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "scheduler:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get the signature key from environment variable
-SIGNATURE_KEY = os.getenv("SIGNATURE_KEY")
+SIGNATURE_KEY = os.getenv("SIGNATURE_KEY") or ""
 
 if SIGNATURE_KEY is None:
     print("Error: SIGNATURE_KEY environment variable not set.", file=sys.stderr)
