@@ -25,7 +25,7 @@ RESULTS_QUEUE = os.getenv("RESULTS_QUEUE", "execution_results")
 PISTON_URL = os.getenv("PISTON_URL", "http://192.168.100.11:2000") # Using the provided URL
 
 # Default limits and timeouts
-DEFAULT_MEMORY_LIMIT = int(os.getenv("DEFAULT_MEMORY_LIMIT", 128))  # in MB
+DEFAULT_MEMORY_LIMIT = int(os.getenv("DEFAULT_MEMORY_LIMIT", -1))  # in MB
 DEFAULT_COMPILE_TIMEOUT = int(os.getenv("DEFAULT_COMPILE_TIMEOUT", 10000)) # in milliseconds
 DEFAULT_RUN_TIMEOUT = int(os.getenv("DEFAULT_RUN_TIMEOUT", 10000)) # in milliseconds
 
@@ -98,6 +98,7 @@ async def submit(channel: AbstractChannel, client: PystonClient, message: Abstra
         compile_memory_limit=memory_limit, # Using memory_limit for compile stage
         run_memory_limit=memory_limit,     # Using memory_limit for run stage
     )
+    logger.info(payload)
 
     # --- Prepare result message using the provided structure ---
     result_payload = {
@@ -112,6 +113,8 @@ async def submit(channel: AbstractChannel, client: PystonClient, message: Abstra
         "message": execution_result.run_stage.signal if execution_result.run_stage and execution_result.run_stage.signal else None,
         "fail": False # Set fail to False on successful execution or Piston error
     }
+
+    logger.info(result_payload)
 
     # --- Send result back to results queue ---
     await send_result_to_queue(channel, result_payload)
@@ -180,6 +183,12 @@ async def consume_tasks():
     connection = None
     # Instantiate PystonClient here once and pass it to the message handler
     piston_client = PystonClient(PISTON_URL)
+    try:
+        await piston_client.runtimes()
+        logger.info("Connected to piston")
+    except Exception as e:
+        logger.error(f"Failed to connect to piston: {e}")
+        raise
     try:
         connection = await get_rabbitmq_connection()
         if connection is None:
