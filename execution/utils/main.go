@@ -2,16 +2,15 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"strings"
 )
 
-var input string = "{{INPUT}}"
+var input string = `{{INPUT}}`
 
 func main() {
-    dat, err := os.ReadFile("./input.txt")
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Print(string(dat))
+	var i int
+	for i = 0; i < 10000000; i++ {
+	}
+	fmt.Println(i)
+	fmt.Println(strings.TrimSpace(input))
 }

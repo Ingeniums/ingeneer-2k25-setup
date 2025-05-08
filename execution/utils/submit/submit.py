@@ -7,7 +7,7 @@ import argparse
 
 SCHEDULER_URL = os.getenv("SCHEDULER_URL", "http://localhost:8001/submit")
 
-SETTINGS = "gAAAAABoG_wQM3nqFSXyNrsMFe1Ua4K11TVYBgbT3M_61oPw_GCHBEETJNO3dAuHnlIBvsHQ6LnvqwhmFPt9E_szmlEDQsNa0lr2PRzm8r2Zc1vPSjNVDroRBZ8hZu3-99LOzcl4IO6kbKDTG4iRMTpyBlCtw2rlUq-egoEOhZp7TQnR0EDKto4="
+SETTINGS = "gAAAAABoHI0pQgyPwdtbIsCy2aDVePuFmeUy_HaFeKbJ-tHfiIKkyF0LH_NSy253_QTvg4oAM1JP2vUGFvRcwfaJfbeWB5741UEaHunnO2d3Bk4bAnbbkts="
 
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -50,8 +50,9 @@ def main():
     request_payload = {
         "code": processed_code,
         "language": language,
-        "settings": SETTINGS
     }
+    if SETTINGS != "":
+        request_payload["settings"] = SETTINGS
 
     try:
         response = requests.post(SCHEDULER_URL, json=request_payload)

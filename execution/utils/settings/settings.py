@@ -2,9 +2,17 @@ import json
 import os
 import sys
 from cryptography.fernet import Fernet
+from dotenv import load_dotenv
+load_dotenv()
 
 # Get the encryption key from environment variable
-ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY", "")
+ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY")
+
+settings = {
+    "memory_limit": 512, # In MB
+    # "compile_timeout": 1500000, # In milliseconds
+    # "run_timeout": 1500000, # In milliseconds
+}
 
 if ENCRYPTION_KEY is None:
     print("Error: ENCRYPTION_KEY environment variable not set.", file=sys.stderr)
@@ -31,11 +39,7 @@ def encrypt_settings_json(json_string: str) -> str:
     return encrypted_bytes.decode('utf-8')
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python encrypt_settings.py <json_string>")
-        sys.exit(1)
-
-    settings_json_string = sys.argv[1]
+    settings_json_string = json.dumps(settings)
 
     try:
         encrypted_string = encrypt_settings_json(settings_json_string)

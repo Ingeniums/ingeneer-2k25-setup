@@ -2,9 +2,11 @@ import os
 import sys
 from cryptography.hazmat.primitives import hashes, hmac
 from cryptography.hazmat.backends import default_backend
+from dotenv import load_dotenv
+load_dotenv()
 
 # Get the signature key from environment variable
-SIGNATURE_KEY = os.getenv("SIGNATURE_KEY", "")
+SIGNATURE_KEY = os.getenv("SIGNATURE_KEY")
 
 if SIGNATURE_KEY is None:
     print("Error: SIGNATURE_KEY environment variable not set.", file=sys.stderr)
@@ -17,7 +19,7 @@ def generate_flag(input_string: str) -> str:
         # Create a new HMAC instance with the signature key and SHA256
         h = hmac.HMAC(SIGNATURE_KEY.encode('utf-8'), hashes.SHA256(), backend=default_backend())
         # Update the hasher with the input string bytes
-        h.update(input_string.encode('utf-8'))
+        h.update(input_string.strip().encode('utf-8'))
         # Finalize the hash and get the hexadecimal representation
         return h.finalize().hex()
     except Exception as e:

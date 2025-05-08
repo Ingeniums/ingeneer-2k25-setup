@@ -53,6 +53,11 @@ services:
       - ../piston/data/piston/packages:/piston/packages
     tmpfs:
       - /tmp:exec
+    environment:
+      PISTON_COMPILE_TIMEOUT: 60000
+      PISTON_RUN_TIMEOUT: 300000
+      PISTON_COMPILE_MEMORY_LIMIT: 1073741824
+      PISTON_RUN_MEMORY_LIMIT: 1073741824
 
 networks:
   runner:

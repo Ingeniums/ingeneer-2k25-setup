@@ -32,9 +32,9 @@ EXECUTION_TIMEOUT = int(os.getenv("EXECUTION_TIMEOUT", 60)) # Default to 60 seco
 
 # Encryption and Hashing Keys (MUST be set as environment variables)
 # For Fernet, the key must be 32 url-safe base64-encoded bytes. Fernet.generate_key() can create one.
-ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY", "")
+ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY")
 # For HMAC-SHA256, the key can be any length, but a strong random key is recommended.
-SIGNATURE_KEY = os.getenv("SIGNATURE_KEY", "")
+SIGNATURE_KEY = os.getenv("SIGNATURE_KEY")
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -130,32 +130,50 @@ def process_settings(encrypted_settings_string: str) -> Dict[str, Any]:
 # --- Feeder Response Processing Function ---
 def process_feeder_response(feeder_result: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Processes the result received from the feeder service, hashes the output,
-    and returns a flag.
+    Processes the result received from the feeder service.
+    Returns stderr if an error occurred, otherwise hashes the output and returns a flag.
     """
+    # Check for explicit failure flag from feeder
+    if feeder_result.get("fail") is True:
+        logger.error(f"Feeder reported failure for job ID {feeder_result.get('job_id')}: {feeder_result.get('message', 'No message')}")
+        # Return stderr or a relevant error message
+        return {"error": feeder_result.get("stderr", feeder_result.get("message", "Execution failed."))}
+
+    # Check for execution status indicating an error (e.g., compile error, runtime error)
+    status = feeder_result.get("status")
+    if status != "success":
+         logger.warning(f"Feeder reported non-success status '{status}' for job ID {feeder_result.get('job_id')}")
+         # Return stderr or relevant error output
+         return {"error": feeder_result.get("stderr", feeder_result.get("compile_stderr", feeder_result.get("message", "Execution status non-success.")))}
+
+
+    # If no failure or error status, proceed with hashing stdout
     if SIGNATURE_KEY is None:
-         raise ValueError("Signature key not set.")
+         logger.error("Signature key not set. Cannot generate flag.")
+         # Decide how to handle this - return an error or proceed without hashing?
+         # Returning an error for now.
+         return {"error": "Server configuration error: Signature key not set."}
+
 
     # We will hash the stdout of the execution result
-    print(feeder_result)
     output_to_hash = feeder_result.get("stdout", "")
     if output_to_hash is None: # Ensure None becomes empty string
         output_to_hash = ""
 
-    print(output_to_hash)
     try:
         # Create a new HMAC instance for each hashing operation (recommended practice)
         h = hmac.HMAC(SIGNATURE_KEY.encode('utf-8'), hashes.SHA256(), backend=default_backend())
-        h.update(output_to_hash.encode('utf-8'))
+        # Strip leading/trailing whitespace before hashing, as it can affect the hash
+        h.update(output_to_hash.strip().encode('utf-8'))
         flag = h.finalize().hex() # Get the hexadecimal representation of the hash
 
         return {"flag": flag}
 
     except Exception as e:
-        logger.error(f"An error occurred during result hashing: {e}", exc_info=True)
+        logger.error(f"An error occurred during result hashing for job ID {feeder_result.get('job_id')}: {e}", exc_info=True)
         # Decide how to handle hashing failure - return an error flag or raise?
         # Returning an error flag for now.
-        return {"flag": f"ERROR_HASHING_FAILED: {e}"}
+        return {"error": f"ERROR_HASHING_FAILED: {e}"}
 
 
 # --- RabbitMQ Consumer Task ---
@@ -364,7 +382,7 @@ async def submit_code(request: Request):
             feeder_result = await asyncio.wait_for(future, timeout=EXECUTION_TIMEOUT)
             logger.info(f"Received result from feeder for job ID: {job_id}")
 
-            # Process the result (hash the output) before returning
+            # Process the result (hash the output or return error) before returning
             final_response = process_feeder_response(feeder_result)
 
             return JSONResponse(content=final_response)
@@ -402,11 +420,3 @@ async def submit_code(request: Request):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"An unexpected error occurred: {e}"
         )
-# --- Entry Point (for running with uvicorn) ---
-# To run this service:
-# 1. Save as scheduler_service.py
-# 2. Install dependencies: pip install fastapi uvicorn aio-pika cryptography
-# 3. Set environment variables ENCRYPTION_KEY and SIGNATURE_KEY (e.g., in a .env file or your shell)
-# 4. Set RabbitMQ environment variables if not using defaults
-# 5. Run: uvicorn scheduler_service:app --reload
-# (Use --reload for development, remove for production)

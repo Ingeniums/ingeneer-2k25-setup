@@ -70,7 +70,7 @@ async def send_result_to_queue(channel: AbstractChannel, result_payload: dict):
 # --- Piston Connectivity Check and Runtime Fetch ---
 def fetch_piston_runtimes() -> Optional[List[Dict[str, Any]]]:
     """Fetches runtimes from the Piston API /runtimes endpoint."""
-    runtimes_url = f"{PISTON_URL}/api/v2//runtimes"
+    runtimes_url = f"{PISTON_URL}/api/v2/runtimes"
     logger.info(f"Fetching Piston API runtimes from {runtimes_url}...")
     TRIES = 5
     tried = 0
@@ -105,10 +105,10 @@ async def send_error(
     channel: AbstractChannel,
     job_id: str,
     language: str,
-    version: str | None,
     message: str,
-    stderr: str | None,
     status: str,
+    version: Optional[str] = None,
+    stderr: Optional[str] = None,
 ):
     logger.error(message)
     error_payload = {
@@ -118,7 +118,7 @@ async def send_error(
         "compile_output": None,
         "compile_stderr": None,
         "language": language,
-        "version": None,
+        "version": version,
         "status": status,
         "message": message,
         "fail": True
@@ -158,7 +158,6 @@ async def submit(channel: AbstractChannel, message: AbstractIncomingMessage):
                 logger.warning(f"Received invalid message format. Missing job_id, code, or language. Payload: {payload}")
                 return
 
-            logger.info(f"Processing job ID: {job_id} for language: {language}")
 
             # --- Look up language version ---
             version = language_version_map.get(language.lower()) # Use lower case for lookup
@@ -177,25 +176,30 @@ async def submit(channel: AbstractChannel, message: AbstractIncomingMessage):
                 "language": language, # Use the original language string
                 "version": version, # Include the looked-up version
                 "files": [{"content": code}],
-                "compile_timeout": compile_timeout_ms,
-                "run_timeout": run_timeout_ms,
             }
+            if run_timeout_ms is not None:
+                piston_request_body["run_timeout"] = run_timeout_ms
+
+            if compile_timeout_ms is not None:
+                piston_request_body["compile_timeout"] = compile_timeout_ms
 
             if memory_limit_mb != -1:
                 memory_limit_bytes = memory_limit_mb * 1024 * 1024
                 piston_request_body["compile_memory_limit"] = memory_limit_bytes
                 piston_request_body["run_memory_limit"] = memory_limit_bytes
 
+            logger.info(f"Processing job ID: {job_id} for language: {language}, payload: {piston_request_body}")
             # --- Execute code using Piston API via requests ---
-            piston_api_url = f"{PISTON_URL}/api/v2//execute"
+            piston_api_url = f"{PISTON_URL}/api/v2/execute"
             response = None
             try:
                 response = await asyncio.to_thread(
                     requests.post,
                     piston_api_url,
                     json=piston_request_body,
-                    timeout=max(compile_timeout_ms, run_timeout_ms) / 1000.0 + 5
+                    timeout=(compile_timeout_ms + run_timeout_ms) / 1000.0 + 5
                 )
+                logger.info(f"Recieved {response.json()}")
                 response.raise_for_status()
 
             except requests.exceptions.Timeout:
