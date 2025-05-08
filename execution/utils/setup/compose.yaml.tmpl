@@ -25,7 +25,7 @@ services:
     ports:
       - 2000
     volumes:
-      - ../piston/data/piston/packages:/piston/packages
+      - {{PACKAGES_DIR}}:/piston/packages
     tmpfs:
       - /tmp:exec
     environment:

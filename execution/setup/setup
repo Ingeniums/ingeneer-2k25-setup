@@ -1,0 +1,26 @@
+#!/bin/bash
+
+piston_dir="$(pwd)/piston/"
+if [ -d $piston_dir ]; then
+    sudo rm -rf $piston_dir
+fi
+git clone https://github.com/engineer-man/piston $piston_dir
+cd $piston_dir
+docker compose up -d api
+cd cli
+npm i
+cd -
+# echo "Started python installation..."
+# cli/index.js ppman install python &
+echo "Started go installation..."
+cli/index.js ppman install go &
+# echo "Started gcc installation..."
+# cli/index.js ppman install gcc &
+# echo "Started node installation..."
+# cli/index.js ppman install node &
+wait
+echo "Packages installed successfully you can run compose..."
+docker compose down
+docker container rm -f piston_api
+echo "Generating compose file..."
+cat ./compose.yaml.tmpl | sed "s|{{PACKAGES_DIR}}|$piston_dir/data/piston/packages" > compose.yaml
