@@ -3,9 +3,16 @@
 origin="$(pwd)"
 piston_dir="$(pwd)/piston/"
 if [ -d $piston_dir ]; then
-    sudo rm -rf $piston_dir
+    read -p "Piston already exists on path, Delete [y/n]: " answer
+    if [ "$answer" = "y" ]; then
+        sudo rm -rf $piston_dir
+        echo "Cloning piston repo..."
+        git clone https://github.com/engineer-man/piston $piston_dir
+    fi
+else
+    echo "Cloning piston repo..."
+    git clone https://github.com/engineer-man/piston $piston_dir
 fi
-git clone https://github.com/engineer-man/piston $piston_dir
 cd $piston_dir
 docker compose up -d api
 cd cli
