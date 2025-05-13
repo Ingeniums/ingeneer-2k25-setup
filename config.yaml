@@ -1,26 +1,18 @@
-# Configuration for team challenges
-teams:
-  - TeamAlpha:email1@gmail.com,email2@gmail.com
-  - TeamBeta:email1@gmail.com,email2@gmail.com
-  - TeamGamma:email1@gmail.com,email2@gmail.com
-  - TeamDelta:email1@gmail.com,email2@gmail.com
-  - TeamEpsilon:email1@gmail.com,email2@gmail.com
-
 phases:
   phase1:
-    - web-exploitation
-    - cryptography
-    - forensics
-    - binary-analysis
+    - 1
+    - 4
+    - 2
+    - 3
   
   phase2:
-    - advanced-web
-    - reverse-engineering
-    - network-security
-    - steganography
-    - privilege-escalation
+    - 5
+    - 7
+    - 8
+    - 6
+    - 9
   
   phase3:
-    - final-challenge-1
-    - final-challenge-2
-    - capstone-project
+    - 10
+    - 11
+    - 12

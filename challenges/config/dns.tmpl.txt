@@ -1,1 +1,0 @@
-{{challenge}}.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
