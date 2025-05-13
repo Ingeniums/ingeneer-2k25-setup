@@ -91,9 +91,6 @@ process_challenge () {
     echo "Setting parameters..."
     cat "$challenge_path/challenge.yml" | \
         sed "s/{{category}}/$category/g" |\
-        sed "s|{{url}}|$URL|g" | \
-        sed "s/{{host}}/$HOST/g" | \
-        sed "s/{{port}}/$port/g" | \
         sed "s/{{warmup}}/$WARMUP/g" | \
         sed "s/{{easy}}/$EASY/g" | \
         sed "s/{{medium}}/$MEDIUM/g" | \
@@ -101,7 +98,9 @@ process_challenge () {
         sed "s/{{tough}}/$TOUGH/g" > "$out_dir/challenge.yml"
 
     echo "Processing..."
-    python ./process.py "$out_dir/challenge.yml" "$challenge_path"
+    ./process.py "$out_dir/challenge.yml" "$challenge_path"
+    echo "Updating DNS/Server configuration..."
+    ./connect.py "$out_dir/challenge.yml" "$name" $port
 
     cat "$out_dir/challenge.yml" | \
         sed "s/'{{warmup_initial}}'/$WARMUP/g" |\
@@ -133,6 +132,10 @@ process () {
 }
 
 process_category () {
+    if [ "$category" = "sample" ]; then
+        echo "Skipping sample..."
+        return
+    fi
     mapfile files < <(find "$src/$category" -maxdepth 1 -type d -printf "%f\n")
     files=${files[@]:1}
     for name in "${files[@]:1}"; do
@@ -155,6 +158,8 @@ if [ "$category" != "" ]; then
 fi
 
 rm -r $out/*
+echo > "./config/dns.txt"
+echo > "./config/nginx.conf"
 for category in $(ls $src); do
     if [ ! -d "$src/$category" ]; then
         continue

@@ -1,0 +1,43 @@
+id,category,author,difficulty,name,path
+0,forensics,{sirmoncef},easy,The Howler Secret,forensics/The-Howler-Secret
+1,forensics,{sirmoncef},easy,The Forbidden Packet,forensics/The-Forbidden-Packet
+2,forensics,{sirmoncef},medium,Snape's Document,forensics/Snape's-document
+3,forensics,{sirmoncef},medium,The Gitmark,forensics/The-Gitmark
+4,forensics,{sirmoncef},hard,Pensieve Dump,forensics/Pensieve-Dump
+5,misc,1nitramfs,hard,Wand Of Airthmancy - Hard,misc/hard-wand-of-airthmancy
+6,misc,1nitramfs,medium,Wand Of Airthmancy - Medium,misc/medium-wand-of-airthmancy
+7,devops,1nitramfs,medium,Ministry Form Checker,devops/Ministry-Form-Checker
+8,devops,youness,warmup,Capsula Enchanta,devops/Capsula-Enchanta
+9,devops,youness,medium,The Fidelius Charm,devops/the-fidelius-charm
+10,devops,1nitramfs,easy,The Vanishing Cabinet,devops/the-vanishing-cabinet
+11,networking,th31rtist,hard,Escape the law,networking/Escape-the-law
+12,networking,th31rtist,medium,Two_in_one,networking/Two_in_one
+13,networking,th31rtist,easy,The Lost Artifacts,networking/The-Lost-Artifacts
+14,networking,th31rtist,easy,The Sorting Hat,networking/The-Sorting-Router
+15,networking,th31rtist,easy,The Switch of Secrets,networking/The-Switch-of-Secrets
+16,networking,th31rtist,easy,The forgotten spell,networking/The-Forgotten-spell
+17,networking,th31rtist,medium,After-Dark Detour,networking/After-Dark-Detour
+18,networking,th31rtist,hard,Break_a_rule,networking/break-a-rule
+19,web,ilyes_haddad_,medium,The Hidden Panel 2,web/the-hidden-panel-2
+20,web,{sirmoncef},easy,Collision,web/collision
+21,web,1nitramfs,easy,Head Curator,web/head_curator
+22,web,ilyes_haddad_,easy,The Hidden Panel,web/the-hidden-panel
+23,web,1nitramfs,easy,House Of Spells,web/house_of_spells
+24,web,1nitramfs,hard,Room of Requirement,web/room_of_requirement
+25,design,Dahoun Manel,warmup,Lumos,design/Lumos
+26,design,Mountassar,easy,Clone Summoning,design/Clone-Summoning
+27,design,Dahoun Manel,warmup,Lumos,design/Signum-Revelio
+28,design,Dahoun Manel,easy,Reparo,design/Reparo
+29,design,Mountassar,hard,Crest of the College,design/Crest-of-the-College
+30,design,Dahoun Manel,easy,Nox–Extinguishes light,design/Nox-Extinguishes-light
+31,design,Mountassar,tough,The founding fathers,design/The-founding-fathers
+32,design,Dahoun Manel,medium,Polyjuice Potion,design/Polyjuice-Potion
+33,design,Dahoun Manel,medium,The Packing Charm,design/The-Packing-Charm
+34,crypto,Yasser,warmup,The ArithmaTrap,crypto/arithma-trap
+35,crypto,Yasser,easy,Egg Clue,crypto/Egg-clue
+36,crypto,Yasser,easy,The Forbidden Forest,crypto/Forbidden-Forest
+37,crypto,Yasser,medium,Wizard’s Chess,crypto/wizard-chess
+38,crypto,Yasser,warmup,Parseltongue Backdoor,crypto/Parseltongue-Backdoor
+39,crypto,Yasser,medium,The Trace,crypto/trace
+40,crypto,Yasser,medium,Chamber of Secrets,crypto/Chamber-of-Secrets
+41,crypto,Yasser,easy,Karkaroff's Curse,crypto/Karkaroffs-Curse

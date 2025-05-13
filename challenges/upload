@@ -70,6 +70,24 @@ if [ ! -d "$SRC_DIR" ]; then
     exit 1
 fi
 
+challenge="$1"
+if [ "$challenge" != "" ]; then
+    challenge_path="$SRC_DIR/$challenge"
+    if [ -f "${challenge_path}/challenge.yml" ]; then
+        echo "Syncing $challenge..."
+        ctf challenge sync "$challenge_path"
+        if [ -f "$challenge_path/compose.yaml" ]; then
+            read -p "Restart containers [y/n]: " ans
+            if [ "$ans" = "y" ]; then
+                docker compose -f "$challenge_path/compose.yaml" down
+                docker compose -f "$challenge_path/compose.yaml" up -d --build
+            fi
+        fi
+    fi
+
+    exit
+fi
+
 find "$SRC_DIR" -mindepth 1 -maxdepth 1 -type d | while read category_dir; do
     category_name=$(basename "$category_dir")
 
@@ -97,8 +115,6 @@ find "$SRC_DIR" -mindepth 1 -maxdepth 1 -type d | while read category_dir; do
                 echo "Synced: ${challenge_display_name} successfully"
                 synced_challenges=$((synced_challenges+1))
             else
-                # Sync failed, attempt add
-                # Clear the temporary output file for the add command output
                 > "$CTFCLI_OUTPUT"
                 ctf challenge add "$challenge_path_for_ctfcli" > "$CTFCLI_OUTPUT" 2>&1
                 add_exit_code=$?
@@ -132,9 +148,6 @@ find "$SRC_DIR" -mindepth 1 -maxdepth 1 -type d | while read category_dir; do
                     fi
                 fi
             fi
-        # This case (directory without challenge.yml) is now silent as per request
-        # else
-        #    echo "Skipping directory ${challenge_dir}: challenge.yml not found."
         fi
     done
 done
