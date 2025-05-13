@@ -1,7 +1,0 @@
-
-services:
-  networking_The-Lost-Artifacts:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Lost-Artifacts/challenge"
-    ports:
-      - "30030:1234"

@@ -1,7 +1,0 @@
-
-services:
-  web_head_curator:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/web/head_curator/challenge"
-    ports:
-      - "30038:5000"

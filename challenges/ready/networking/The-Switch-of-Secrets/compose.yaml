@@ -1,7 +1,0 @@
-
-services:
-  networking_The-Switch-of-Secrets:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/The-Switch-of-Secrets/challenge"
-    ports:
-      - "30032:1234"

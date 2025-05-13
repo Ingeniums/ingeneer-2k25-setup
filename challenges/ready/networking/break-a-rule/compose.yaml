@@ -1,7 +1,0 @@
-
-services:
-  networking_break-a-rule:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/break-a-rule/challenge"
-    ports:
-      - "30035:1234"

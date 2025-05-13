@@ -1,7 +1,0 @@
-
-services:
-  networking_After-Dark-Detour:
-    build:
-      context: "/home/merzouka/code/inge/neer/setup/challenges/../../challenges/networking/After-Dark-Detour/challenge"
-    ports:
-      - "30034:1234"
