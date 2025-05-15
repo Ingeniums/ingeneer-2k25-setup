@@ -1,4 +1,4 @@
-username,email,team
+Username,Email Address,Team name (exactly 4 members)
 user1,user1@example.com,TeamA
 user2,user2@example.com,TeamA
 user3,user3@example.com,TeamB

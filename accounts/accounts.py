@@ -4,12 +4,15 @@ import random
 import string
 
 CTFD_URL = "http://localhost:8000/api/v1"
-ADMIN_KEY = "ctfd_62b2c76657fd24b84807e9767ae70cd7f6fc133fb30880a19dfeebdc2342b476"
+ADMIN_KEY = "ctfd_ae94f39ed252258a2fb942bdb7fdc6dca8a014dec35fd8d8b73b9cb3fe62f093"
 CSV_FILE = "users.csv"
 USERS_FILE = "users.json"
 TEAMS_FILE = "teams.json"
-USER_CREDS_FILE = "user-creds.csv"
-TEAM_CREDS_FILE = "team-creds.csv"
+USER_CREDS_FILE = "./out/user-creds.csv"
+TEAM_CREDS_FILE = "./out/team-creds.csv"
+USERNAME_FIELD = "Username"
+EMAIL_FIELD = "Email Address"
+TEAM_FIELD = "Team name (exactly 4 members)"
 
 def generate_password(length=20):
     characters = string.ascii_letters + string.digits + string.punctuation
@@ -94,13 +97,13 @@ def process_csv(csv_file):
     try:
         with open(csv_file, "r") as file:
             reader = csv.DictReader(file)
-            if not reader.fieldnames or not all(field in reader.fieldnames for field in ["username", "email", "team"]):
-                raise ValueError("CSV file must contain 'username', 'email', and 'team' columns.")
+            if not reader.fieldnames or not all(field in reader.fieldnames for field in [USERNAME_FIELD, EMAIL_FIELD, TEAM_FIELD]):
+                raise ValueError(f"CSV file must contain '{USERNAME_FIELD}', '{EMAIL_FIELD}', and '{TEAM_FIELD}' columns.")
 
             for row in reader:
-                username = row["username"]
-                email = row["email"]
-                team = row["team"]
+                username = row[USERNAME_FIELD]
+                email = row[EMAIL_FIELD]
+                team = row[TEAM_FIELD]
 
                 if team not in team_user_map:
                     team_user_map[team] = []
