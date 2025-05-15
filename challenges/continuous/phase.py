@@ -91,12 +91,12 @@ def process_phase(phase_name, challenge_ids, challenges, root_dir):
         if update_challenge_yml(challenge['path'], root_dir, set_visible=True):
             check_and_start_containers(challenge['path'], root_dir)
 
-def hide_other_challenges(selected_phase_ids, challenges, phases, root_dir):
+def hide_challenges(challenges, root_dir):
     print("\nHiding challenges not in current phase")
     
     all_challenge_ids = set(map(lambda k: int(challenges[k]["id"]), list(challenges)))
     
-    challenges_to_hide = all_challenge_ids - set(selected_phase_ids)
+    challenges_to_hide = all_challenge_ids
     
     for challenge_id in challenges_to_hide:
         if challenge_id not in challenges:
@@ -135,7 +135,17 @@ def main():
     
     print(f"Loading challenge data from: {CHALLENGES_CSV}")
     challenges = load_csv_challenges(CHALLENGES_CSV)
+
+    # Hide challenges in other phases
+
+    if input("Hide challenges [y/n]: ").lower() == "y":
+        hide_challenges(challenges, ROOT)
+        print("Challenges hidden...")
+    else:
+        exit()
     
+    if input("Continue [y/n]: ").lower() == "n":
+        exit()
     phase_to_process = select_phase(phases)
     
     if phase_to_process:
@@ -144,8 +154,6 @@ def main():
             selected_phase_ids = phases[phase_to_process]
             process_phase(phase_to_process, selected_phase_ids, challenges, ROOT)
             
-            # Hide challenges in other phases
-            hide_other_challenges(selected_phase_ids, challenges, phases, ROOT)
         else:
             print(f"Phase '{phase_to_process}' not found in YAML file")
     else:

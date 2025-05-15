@@ -1,4 +1,10 @@
 phases:
+  phase0:
+    - 1
+    - 4
+    - 2
+    - 3
+
   phase1:
     - 1
     - 4
