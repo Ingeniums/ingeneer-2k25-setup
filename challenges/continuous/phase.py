@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import csv
 import os
-from os.path import exists
 import subprocess
 import sys
 import yaml
@@ -105,7 +104,7 @@ def hide_challenges(challenges, root_dir):
             
         challenge = challenges[challenge_id]
         print(f"Hiding: {challenge['path']} (ID: {challenge_id})")
-        update_challenge_yml(challenge['path'], root_dir, set_visible=True)
+        update_challenge_yml(challenge['path'], root_dir, set_visible=False)
 
 def select_phase(phases):
     print("\nAvailable phases:")
