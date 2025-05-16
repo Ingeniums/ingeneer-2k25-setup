@@ -13,3 +13,5 @@ head-curator.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:
 the-hidden-panel.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
 house-of-spells.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
 room-of-requirement.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-hidden-panel.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-hidden-panel.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
