@@ -2,3 +2,5 @@
 **/venv
 **/token.pickle
 **/testing
+**/secret.json
+**/token*

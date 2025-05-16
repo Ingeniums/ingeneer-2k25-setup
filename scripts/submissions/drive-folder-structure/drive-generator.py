@@ -34,7 +34,7 @@ def get_drive_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'submissions-setup-secret.json', SCOPES)
+                '../../../secret.json', SCOPES)
             creds = flow.run_local_server(port=0)
         
         # Save the credentials for the next run

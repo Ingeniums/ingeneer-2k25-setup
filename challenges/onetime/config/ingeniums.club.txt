@@ -1,0 +1,67 @@
+;;
+;; Domain:     ingeniums.club.
+;; Exported:   2025-05-12 16:35:40
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+ingeniums.club	3600	IN	SOA	aarav.ns.cloudflare.com. dns.cloudflare.com. 2049873434 10000 2400 604800 3600
+
+;; NS Records
+ingeniums.club.	86400	IN	NS	aarav.ns.cloudflare.com.
+ingeniums.club.	86400	IN	NS	noor.ns.cloudflare.com.
+
+;; A Records
+ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+ingeniums.club.	1	IN	A	66.33.60.67 ; cf_tags=cf-proxied:true
+ingeniums.club.	1	IN	A	76.76.21.93 ; cf_tags=cf-proxied:true
+
+;; ingeneer
+arithma-trap.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+wizard-chess.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+hard-wand-of-airthmancy.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+medium-wand-of-airthmancy.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+escape-the-law.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-lost-artifacts.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-switch-of-secrets.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+after-dark-detour.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-hidden-panel-2.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+collision.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+head-curator.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+the-hidden-panel.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+house-of-spells.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+room-of-requirement.ingeneer.ingeniums.club.	1	IN	A	41.223.236.32 ; cf_tags=cf-proxied:false
+
+
+;; CNAME Records
+www.ingeniums.club.	1	IN	CNAME	cname.vercel-dns.com. ; cf_tags=cf-proxied:true
+
+;; MX Records
+ingeniums.club.	1	IN	MX	20 eforward5.registrar-servers.com.
+ingeniums.club.	1	IN	MX	15 eforward4.registrar-servers.com.
+ingeniums.club.	1	IN	MX	10 eforward3.registrar-servers.com.
+ingeniums.club.	1	IN	MX	10 eforward2.registrar-servers.com.
+ingeniums.club.	1	IN	MX	10 eforward1.registrar-servers.com.
+
+;; TXT Records
+_acme-challenge.ingeneer.ingeniums.club.	1	IN	TXT	"Mmhk6n8S5FjMe_ivZITj4qTdHDO8o3b9dA3F8j0RxaE"
+ingeniums.club.	1	IN	TXT	"v=spf1 include:spf.efwd.registrar-servers.com ~all"
