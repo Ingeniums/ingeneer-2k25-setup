@@ -24,39 +24,37 @@ if __name__ == "__main__":
 
     if not os.path.isfile(full_path):
         print("No challenge.yml file found with specified path")
-        exit(1)
+        state = "hidden"
+    else:
+        with open(full_path, "r") as config:
+            config = yaml.safe_load(config.read())
+            state = config["state"]
 
-    with open(full_path, "r") as config:
-        config = yaml.safe_load(config.read())
-        state = config["state"]
-        os.chdir("../onetime")
-        subprocess.run(["bash", COMPILE_SCRIPT, category, name])
-        os.chdir(BASE_DIR)
-        print(BASE_DIR)
-        if state != "hidden":
-            with open(full_path, "r") as config_file:
-                config = yaml.safe_load(config_file.read())
-                config["state"] = "visible"
-                with open(full_path, "w") as config_file:
-                    config_file.write(yaml.dump(config))
+    os.chdir("../onetime")
+    subprocess.run(["bash", COMPILE_SCRIPT, category, name])
+    os.chdir(BASE_DIR)
+    print(BASE_DIR)
+    if state != "hidden":
+        with open(full_path, "r") as config_file:
+            config = yaml.safe_load(config_file.read())
+            config["state"] = "visible"
+            with open(full_path, "w") as config_file:
+                config_file.write(yaml.dump(config))
 
-            if os.path.isfile(f"{CHALLENGES_PATH}/{config_path}/compose.yaml"):
-                subprocess.run([
-                    "docker",
-                    "compose",
-                    "-f", f"{CHALLENGES_PATH}/{config_path}/compose.yaml",
-                    "down",
-                ])
-                subprocess.run([
-                    "docker",
-                    "compose",
-                    "-f", f"{CHALLENGES_PATH}/{config_path}/compose.yaml",
-                    "up",
-                    "-d",
-                    "--build"
-                ])
+        if os.path.isfile(f"{CHALLENGES_PATH}/{config_path}/compose.yaml"):
+            subprocess.run([
+                "docker",
+                "compose",
+                "-f", f"{CHALLENGES_PATH}/{config_path}/compose.yaml",
+                "down",
+            ])
+            subprocess.run([
+                "docker",
+                "compose",
+                "-f", f"{CHALLENGES_PATH}/{config_path}/compose.yaml",
+                "up",
+                "-d",
+                "--build"
+            ])
 
-        subprocess.run(["bash", "./upload", config_path])
-                
-            
-
+    subprocess.run(["bash", "./upload", config_path])

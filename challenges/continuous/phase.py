@@ -19,7 +19,7 @@ CONFIG = "../../config.yaml"
 ROOT = "../ready/"
 
 # --- Google Drive Configuration ---
-DRIVE_BASE_PATH_ON_DRIVE = "My Drive|2024/2025|TT|ingeneer" # Example: "MyCTFEvent|Data"
+DRIVE_BASE_PATH_ON_DRIVE = "2024/2025|TT|ingeneer" # Example: "MyCTFEvent|Data"
 SCOPES = ['https://www.googleapis.com/auth/drive']
 CREDENTIALS_FILE = '../../secret.json'
 TOKEN_FILE = 'token.json'
@@ -223,7 +223,6 @@ def update_challenge_yml(challenge_path, root_dir, set_visible=True, drive_servi
                 yaml.dump(challenge_data, f, default_flow_style=False, sort_keys=False)
             print(f"Challenge {challenge_path}: state set to {desired_state}.")
         
-        print(challenge_uploads_parent_folder_id)
         if set_visible and drive_service and challenge_uploads_parent_folder_id:
             if challenge_data.get('submit') == 'drive':
                 challenge_name_for_folder = challenge_data.get('name')
@@ -351,7 +350,7 @@ def main():
             # Setup folder for direct challenge submissions
             base_drive_folder_id = get_or_create_folder_id_by_path(drive_service, DRIVE_BASE_PATH_ON_DRIVE)
             if base_drive_folder_id:
-                challenge_uploads_parent_folder_id = create_folder_if_not_exists(drive_service, base_drive_folder_id, f"{DRIVE_BASE_PATH_ON_DRIVE}|submissions")
+                challenge_uploads_parent_folder_id = create_folder_if_not_exists(drive_service, base_drive_folder_id, f"submissions")
                 if not challenge_uploads_parent_folder_id:
                     print(f"Could not create/verify '{DRIVE_BASE_PATH_ON_DRIVE}|submissions'. Challenge-specific Drive folders will not be created.")
                     exit(1)
