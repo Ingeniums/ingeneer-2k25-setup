@@ -2,7 +2,6 @@
 import os
 import yaml
 import csv
-import re
 
 CHALLENGES_DIR="../ready"
 OUTPUT_FILE="../challenges.csv"
@@ -109,7 +108,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Process CTF challenges and export to CSV.")
     # parser.add_argument("challenges_dir", help="Path to directory containing challenge categories")
-    parser.add_argument("--output", default="challenges.csv", help="Output CSV filename (default: challenges.csv)")
+    parser.add_argument("--output", default=OUTPUT_FILE, help="Output CSV filename (default: challenges.csv)")
     
     args = parser.parse_args()
     
