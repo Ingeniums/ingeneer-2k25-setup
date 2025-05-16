@@ -68,9 +68,10 @@ process_compose () {
         compose_path="$origin/compose.yaml.tmpl"
     fi
 
+    container_name=$(echo $name | tr 'A-Z' 'a-z')
     echo "Generated compose file: $out_dir/compose.yaml..."
     cat $compose_path | sed "s/{{category}}/$category/g" | \
-        sed "s/{{name}}/$name/g" | \
+        sed "s/{{name}}/$container_name/g" | \
         sed "s|{{src}}|$challenge_path|g" | \
         sed "s/{{port}}/$port/g" > "$out_dir/compose.yaml"
 }
