@@ -89,6 +89,10 @@ process_challenge () {
         mkdir -p $out_dir
     fi
 
+    tmp="$category"
+    if [ "$category" = "problem_solving" ]; then
+        category="problem solving"
+    fi
     echo "Setting parameters..."
     cat "$challenge_path/challenge.yml" | \
         sed "s/{{category}}/$category/g" |\
@@ -119,6 +123,8 @@ process_challenge () {
         sed "s/'{{tough_initial}}'/$TOUGH/g" |\
         sed "s/'{{tough_decay}}'/$TOUGH_DECAY/g" |\
         sed "s/'{{tough_minimum}}'/$TOUGH_MINIMUM/g" > "./tmp.yml"
+
+    category="$tmp"
 
     cp "./tmp.yml" "$out_dir/challenge.yml"
     rm "./tmp.yml"
