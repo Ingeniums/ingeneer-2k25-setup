@@ -70,15 +70,7 @@ if [ "$challenge" != "" ]; then
     if [ -f "${challenge_path}/challenge.yml" ]; then
         echo "Syncing $challenge..."
         ctf challenge sync "$challenge_path"
-        if [ -f "$challenge_path/compose.yaml" ]; then
-            read -p "Restart containers [y/n]: " ans
-            if [ "$ans" = "y" ]; then
-                docker compose -f "$challenge_path/compose.yaml" down
-                docker compose -f "$challenge_path/compose.yaml" up -d --build
-            fi
-        fi
     fi
-
     exit
 fi
 

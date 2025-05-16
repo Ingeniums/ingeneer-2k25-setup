@@ -105,7 +105,7 @@ def hide_challenges(challenges, root_dir):
             
         challenge = challenges[challenge_id]
         print(f"Hiding: {challenge['path']} (ID: {challenge_id})")
-        update_challenge_yml(challenge['path'], root_dir, set_visible=False)
+        update_challenge_yml(challenge['path'], root_dir, set_visible=True)
 
 def select_phase(phases):
     print("\nAvailable phases:")
