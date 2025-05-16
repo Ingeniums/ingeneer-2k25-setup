@@ -76,39 +76,28 @@ def authenticate_google_drive():
         print(f"An unexpected error occurred building the Drive service: {e}")
         exit(1)
 
+def create_team_folder(service, folder_name, parent_id):
+    folder_metadata = {
+        'name': folder_name,
+        'mimeType': 'application/vnd.google-apps.folder',
+        'parents': [parent_id]
+    }
+    created_folder = service.files().create(
+        body=folder_metadata,
+        fields='id, webViewLink'
+    ).execute()
+
+    folder_id = created_folder.get('id')
+    web_view_link = created_folder.get('webViewLink') # Get the webViewLink
+
+    return folder_id, web_view_link
+
 def create_team_folder_and_share(service, folder_name, parent_id='root', member_emails=None, access_role='writer'):
-    """
-    Creates a new folder in Google Drive, grants access to specified members,
-    and returns the folder ID and its webViewLink.
-
-    Args:
-        service: Authorized Google Drive API service instance.
-        folder_name (str): The name for the new folder.
-        parent_id (str, optional): The ID of the parent folder. Defaults to 'root' (My Drive).
-        member_emails (list, optional): A list of email addresses to grant access to.
-        access_role (str, optional): The role to grant ('owner', 'organizer', 
-                                     'fileOrganizer', 'writer', 'commenter', 'reader').
-                                     Defaults to 'writer'.
-
-    Returns:
-        tuple: (folder_id, web_view_link) if successful, otherwise (None, None).
-    """
     if member_emails is None:
         member_emails = []
 
     try:
-        folder_metadata = {
-            'name': folder_name,
-            'mimeType': 'application/vnd.google-apps.folder',
-            'parents': [parent_id]
-        }
-        created_folder = service.files().create(
-            body=folder_metadata,
-            fields='id, webViewLink'
-        ).execute()
-        
-        folder_id = created_folder.get('id')
-        web_view_link = created_folder.get('webViewLink') # Get the webViewLink
+        folder_id, web_view_link = create_team_folder(service, folder_name, parent_id)
 
         if not folder_id:
             print(f"Error: Failed to create folder '{folder_name}' or retrieve its ID.")
@@ -261,6 +250,12 @@ def process_team_members_and_update_creds(service, members_csv_path, team_creds_
             print(f"Warning: Team '{team_name}' (from '{members_csv_path}') not found in '{team_creds_csv_path}'. "
                   f"Skipping Drive folder creation and link update for this team.")
             continue
+
+        create_team_folder(
+            service,
+            folder_name=team_name,
+            parent_id=get_folder_id_from_path(service, "My Drive|2024/2025|TT|ingeneer|backup")
+        )
 
         folder_id, web_view_link = create_team_folder_and_share(
             service,
