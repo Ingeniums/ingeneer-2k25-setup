@@ -73,7 +73,8 @@ process_compose () {
     cat $compose_path | sed "s/{{category}}/$category/g" | \
         sed "s/{{name}}/$container_name/g" | \
         sed "s|{{src}}|$challenge_path|g" | \
-        sed "s/{{port}}/127.0.0.1:$port/g" > "$out_dir/compose.yaml"
+        sed "s/{{port}}/127.0.0.1:$port/g" | \
+        sed "s/{{hostPort}}/$port/g" > "$out_dir/compose.yaml"
 }
 
 process_challenge () {
