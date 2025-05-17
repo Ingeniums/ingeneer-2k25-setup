@@ -8,6 +8,15 @@ def update_yaml_with_files(yaml_file, dir_path):
     
     with open(yaml_file, 'r') as f:
         data = yaml.safe_load(f) or {}
+
+
+    if os.path.exists(files_dir):
+        file_paths = [
+            os.path.join(dir_path, 'files', f) 
+            for f in os.listdir(files_dir) 
+            if os.path.isfile(os.path.join(files_dir, f))
+        ]
+        data['files'] = file_paths
     
     if data["category"] not in ["design"]:
         data["extra"] = {
