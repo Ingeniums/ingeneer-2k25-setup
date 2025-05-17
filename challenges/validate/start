@@ -20,4 +20,5 @@ cd ../continuous/
 ./upload
 cd $wd
 ./up.sh
-echo $dns
+
+cat ../onetime/config/dns.txt

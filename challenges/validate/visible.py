@@ -42,15 +42,6 @@ def update_challenge_yml(challenge_path, root_dir, set_visible=True):
         print(f"Error processing {full_path}: {e}")
         return False
 
-def hide_other_challenges(all_challenges_data, root_dir):
-    print("\nHiding challenges not in current phase(s)...")
-    hidden_count = 0
-    for challenge_data in all_challenges_data.values():
-        if update_challenge_yml(challenge_data['path'], root_dir, set_visible=False):
-            hidden_count +=1
-    if hidden_count > 0:
-        print(f"{hidden_count} challenge(s) set to hidden.")
-
 def main():
     all_challenges_data = load_csv_challenges(CHALLENGES_CSV)
     print("\nSetting all challenges to visible initially...")
@@ -58,7 +49,7 @@ def main():
     for chal_data in all_challenges_data.values():
         if update_challenge_yml(chal_data['path'], ROOT, set_visible=True):
             hidden_count +=1
-        print(f"{hidden_count} challenge(s) initially set to visible.")
+    print(f"{hidden_count} challenge(s) initially set to visible.")
 
 if __name__ == "__main__":
     main()
