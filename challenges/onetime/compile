@@ -4,26 +4,16 @@
 URL="http://localhost"
 HOST="localhost"
 
+INITIAL=500
+DECAY=10
+MINIMUM=50
+
 # value/initial
 WARMUP=50
 EASY=100
 MEDIUM=200
 HARD=300
 TOUGH=400
-
-# decay
-WARMUP_DECAY=2.5
-EASY_DECAY=5
-MEDIUM_DECAY=10
-HARD_DECAY=15
-TOUGH_DECAY=20
-
-# minimum
-WARMUP_MINIMUM=10
-EASY_MINIMUM=20
-MEDIUM_MINIMUM=40
-HARD_MINIMUM=60
-TOUGH_MINIMUM=80
 
 origin=$(pwd)
 category="$1"
@@ -81,7 +71,7 @@ process_challenge () {
     challenge_path="$src/$category/$name"
     if [ ! -f "$challenge_path/challenge.yml" ]; then
         echo "Missing challenge.yml for $challenge_path"
-        exit 1
+        return
     fi
 
     out_dir="$out/$category/$name" 
@@ -109,21 +99,9 @@ process_challenge () {
     ./connect.py "$out_dir/challenge.yml" "$name" $port
 
     cat "$out_dir/challenge.yml" | \
-        sed "s/'{{warmup_initial}}'/$WARMUP/g" |\
-        sed "s/'{{warmup_decay}}'/$WARMUP_DECAY/g" |\
-        sed "s/'{{warmup_minimum}}'/$WARMUP_MINIMUM/g" |\
-        sed "s/'{{easy_initial}}'/$EASY/g" |\
-        sed "s/'{{easy_decay}}'/$EASY_DECAY/g" |\
-        sed "s/'{{easy_minimum}}'/$EASY_MINIMUM/g" |\
-        sed "s/'{{medium_initial}}'/$MEDIUM/g" |\
-        sed "s/'{{medium_decay}}'/$MEDIUM_DECAY/g" |\
-        sed "s/'{{medium_minimum}}'/$MEDIUM_MINIMUM/g" |\
-        sed "s/'{{hard_initial}}'/$HARD/g" |\
-        sed "s/'{{hard_decay}}'/$HARD_DECAY/g" |\
-        sed "s/'{{hard_minimum}}'/$HARD_MINIMUM/g" |\
-        sed "s/'{{tough_initial}}'/$TOUGH/g" |\
-        sed "s/'{{tough_decay}}'/$TOUGH_DECAY/g" |\
-        sed "s/'{{tough_minimum}}'/$TOUGH_MINIMUM/g" > "./tmp.yml"
+        sed "s/'{{initial}}'/$INITIAL/g" | \
+        sed "s/'{{decay}}'/$DECAY/g" | \
+        sed "s/'{{minimum}}'/$MINIMUM/g" > "./tmp.yml"
 
     category="$tmp"
 
