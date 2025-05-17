@@ -1,0 +1,23 @@
+#!/bin/bash
+
+NGINX_CONF="../../ingeneer.conf"
+
+wd=$(pwd)
+
+cd ../onetime/
+./compile
+
+cd config
+original=$(cat $NGINX_CONF | head -n 11)
+echo $original > $NGINX_CONF
+echo "" >> $NGINX_CONF
+cat nginx.conf >> $NGINX_CONF
+
+dns=$(cat dns.txt)
+cd $wd
+python ./visible.py
+cd ../continuous/
+./upload
+cd $wd
+./up.sh
+echo $dns
