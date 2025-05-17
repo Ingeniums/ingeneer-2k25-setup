@@ -15,7 +15,8 @@ cat nginx.conf >> $NGINX_CONF
 
 dns=$(cat dns.txt)
 cd $wd
-python ./visible.py
+./visible.py
+
 cd ../continuous/
 ./upload
 cd $wd
