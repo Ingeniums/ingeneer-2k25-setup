@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Configuring private instance..."
+ctf init
+mv .ctf .private
+
+echo "Configuring public instance..."
+ctf init
+mv .ctf .public
