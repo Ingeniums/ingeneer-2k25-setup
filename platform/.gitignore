@@ -1,1 +1,5 @@
 CTFd/
+private/
+public/
+**/docker-compose-pri*
+**/docker-compose-pub*

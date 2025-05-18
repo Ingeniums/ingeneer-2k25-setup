@@ -4,9 +4,9 @@ services:
     user: root
     restart: always
     ports:
-      - "8000:8000"
+      - "127.0.0.1:800{{number}}:8000"
     environment:
-      - SECRET_KEY=3jEj86fc8kf85u2m7Knr1SeOT1dxXDqDFv6KYBqRshOfTaExmLQqKkGAOFlPDwct
+      - SECRET_KEY="{{secretKey}}"
       - UPLOAD_FOLDER=/var/uploads
       - DATABASE_URL=mysql+pymysql://ingeneer:lCQVJJztfa7MDtR1J78M@db/ingeneer2k25
       - REDIS_URL=redis://cache:6379
