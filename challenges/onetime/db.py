@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 import os
+import re
 import yaml
 import csv
 
 CHALLENGES_DIR="../ready"
+CHALLENGES_SRC="../../../challenges/"
 OUTPUT_FILE="../challenges.csv"
 
 def process_challenges(challenges_dir):
@@ -44,11 +46,17 @@ def process_challenges(challenges_dir):
                 # Read challenge YAML file
                 with open(challenge_yaml_path, 'r') as yaml_file:
                     challenge_data = yaml.safe_load(yaml_file)
+
+                challenge_src_yaml_path = os.path.join(CHALLENGES_SRC, category, challenge_name, "challenge.yml")
+                with open(challenge_src_yaml_path, 'r') as yaml_src:
+                    parsed = re.sub('"{{\\w+}}"', '""', yaml_src.read())
+                    parsed = re.sub("{{\\w+}}", '""', parsed)
+                    challenge_src_data = yaml.safe_load(parsed)
                 
                 difficulty = ""
-                if "tags" in challenge_data and isinstance(challenge_data["tags"], list):
+                if "tags" in challenge_data and isinstance(challenge_src_data["tags"], list):
                     difficulty_levels = ["warmup", "easy", "medium", "hard", "tough"]
-                    for tag in challenge_data["tags"]:
+                    for tag in challenge_src_data["tags"]:
                         tag_str = str(tag).lower()
                         if tag_str in difficulty_levels:
                             difficulty = tag_str
