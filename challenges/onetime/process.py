@@ -4,13 +4,15 @@ import yaml
 import sys
 
 CATEGORIES={
-  "crypto": "Parseltongue",
-  "design": "Charm Learning",
-  "devops": "Systemic Sorcery",
-  "forensics": "Auror Investigation",
-  "misc": "Wizarding Whimsy",
-  "problem solving": "Arithmancy",
-  "web": "Horcrux Hunt",
+    "crypto": "Parseltongue",
+    "design": "Charm Learning",
+    "devops": "Systemic Sorcery",
+    "forensics": "Auror Investigation",
+    "misc": "Wizarding Whimsy",
+    "problem solving": "Arithmancy",
+    "web": "Horcrux Hunt",
+    "networking": "Floo Network",
+    "reverse": "Spell Deconstruction"
 }
 
 

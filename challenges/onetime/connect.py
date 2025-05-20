@@ -16,7 +16,7 @@ def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, ht
         print(f"Error reading YAML file: {e}")
         return
     
-    if 'connection_info' in yaml_content and "docker" not in yaml_content["connection_info"]:
+    if 'connection_info' in yaml_content and "docker" not in yaml_content["connection_info"] and "drive" not in yaml_content["connection_info"]:
         try:
             with open('./config/dns.tmpl.txt', 'r') as dns_template_file:
                 dns_template = dns_template_file.read()

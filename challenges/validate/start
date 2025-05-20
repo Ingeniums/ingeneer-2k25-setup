@@ -15,6 +15,9 @@ cat nginx.conf >> $NGINX_CONF
 
 dns=$(cat dns.txt)
 cd $wd
+cd ../onetime/
+./db.py
+cd $wd
 ./visible.py
 
 cd ../continuous/
