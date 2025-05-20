@@ -3,6 +3,17 @@ import os
 import yaml
 import sys
 
+CATEGORIES={
+  "crypto": "Parseltongue",
+  "design": "Charm Learning",
+  "devops": "Systemic Sorcery",
+  "forensics": "Auror Investigation",
+  "misc": "Wizarding Whimsy",
+  "problem solving": "Arithmancy",
+  "web": "Horcrux Hunt",
+}
+
+
 def update_yaml_with_files(yaml_file, dir_path):
     files_dir = os.path.join(dir_path, 'files')
     
@@ -34,6 +45,7 @@ def update_yaml_with_files(yaml_file, dir_path):
         data["tags"] = tags
     else:
         data["type"] = "standard"
+    data["category"] = CATEGORIES[data["category"]]
 
     
     with open(yaml_file, 'w') as f:

@@ -13,33 +13,30 @@ if [ ! -d "$path/private" ]; then
     git clone https://github.com/CTFd/CTFd.git "$path/private"
     cat "$origin/docker-compose.yml" | \
         sed "s|{{secretKey}}|$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64; echo)|g" | \
-        sed 's|{{number}}|0|g' > "$origin/docker-compose-pri.yml"
+        sed 's|{{number}}|0|g' > "$origin/compose/docker-compose-pri.yml"
 fi
 
 if [ ! -d "$path/public" ]; then
-    cp -r "$path/private" "$path/public"
+    git clone https://github.com/CTFd/CTFd.git "$path/public"
     cat "$origin/docker-compose.yml" | \
         sed "s|{{secretKey}}|$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 64; echo)|g" | \
-        sed 's|{{number}}|1|g' > "$origin/docker-compose-pub.yml"
+        sed 's|{{number}}|1|g' > "$origin/compose/docker-compose-pub.yml"
 fi
 
 
 echo "Change database secrets"
 read -p "Continue?: "
 
-echo "Loading private docker compose configuration..."
+echo "Loading private docker compose configuration and launching..."
 cd $path/private
 rm docker-compose.yml
 cp $origin/compose/docker-compose-pri.yml ./docker-compose.yml
+docker compose up --build -d
 
-echo "Loading public docker compose configuration..."
+echo "Loading public docker compose configuration and launching..."
 cd $path/public
 rm docker-compose.yml
 cp $origin/compose/docker-compose-pub.yml ./docker-compose.yml
-
-echo "Starting platforms..."
-docker compose up --build -d
-cd $path/private
 docker compose up --build -d
 
 echo "Have you set the teams.json and users.json files?"

@@ -22,8 +22,8 @@ services:
     depends_on:
       - db
     networks:
-        default:
-        internal:
+        default-{{number}}:
+        internal-{{number}}:
 
   db:
     image: mariadb:10.11
@@ -37,7 +37,7 @@ services:
     volumes:
       - .data/mysql:/var/lib/mysql
     networks:
-        internal:
+        internal-{{number}}:
     # This command is required to set important mariadb defaults
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
 
@@ -47,9 +47,9 @@ services:
     volumes:
     - .data/redis:/data
     networks:
-        internal:
+        internal-{{number}}:
 
 networks:
-    default:
-    internal:
+    default-{{number}}:
+    internal-{{number}}:
         internal: true

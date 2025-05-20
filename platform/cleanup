@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ./private/
+docker compose down
+sudo rm -r ./private/
+cd ../public/
+docker compose down
+sudo rm -r ../public/

@@ -1,9 +1,23 @@
 #!/bin/bash
 
+CONFIG_PATH="./configs"
+
+if [ -d ./.ctf ]; then
+    rm -r .ctf
+fi
+
+if [ -d $CONFIG_PATH/.private ]; then
+    rm -r $CONFIG_PATH/.private 
+fi
+
+if [ -d $CONFIG_PATH/.public ]; then
+    rm -r $CONFIG_PATH/.public 
+fi
+
 echo "Configuring private instance..."
 ctf init
-mv .ctf ./configs/.private
+mv .ctf $CONFIG_PATH/.private
 
 echo "Configuring public instance..."
 ctf init
-mv .ctf ./configs/.private
+mv .ctf $CONFIG_PATH/.public
