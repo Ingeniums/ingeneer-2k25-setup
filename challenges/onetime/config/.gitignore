@@ -1,2 +1,3 @@
 dns.txt
-nginx.conf
+http.conf
+stream.conf

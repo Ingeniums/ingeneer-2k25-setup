@@ -7,7 +7,7 @@ def format_challenge_name(challenge_name):
     return challenge_name.lower().replace('_', '-')
 
 
-def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, nginx_output_path):
+def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, http_output_path, stream_output_path):
     formatted_challenge = format_challenge_name(challenge_name)
     try:
         with open(yaml_path, 'r') as yaml_file:
@@ -30,28 +30,46 @@ def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, ng
             yaml_content["connection_info"] = str(
                 yaml_content["connection_info"]
             ).replace("{{host}}", host).replace("{{port}}", str(port))
-            print(f"DNS configuration appended to {dns_output_path}")
+            print(f"DNS configuration appended for: {challenge_name}")
         except Exception as e:
             print(f"Error processing DNS template: {e}")
     
-    if yaml_content.get('protocol') == 'http':
-        try:
-            with open('./config/server.tmpl.conf', 'r') as nginx_template_file:
-                nginx_template = nginx_template_file.read()
-            
-            nginx_output = nginx_template.replace('{{challenge}}', formatted_challenge).replace('{{port}}', str(port))
-            
-            url = f"https://{formatted_challenge}.ingeneer.ingeniums.club"
-            yaml_content["connection_info"] = str(
-                yaml_content["connection_info"]
-            ).replace("{{url}}", url)
-
-            with open(nginx_output_path, 'a') as nginx_output_file:
-                nginx_output_file.write(nginx_output)
+        if yaml_content.get('protocol') == 'http':
+            try:
+                with open('./config/http.tmpl.conf', 'r') as http_template_file:
+                    http_template = http_template_file.read()
                 
-            print(f"Nginx configuration appended to {nginx_output_path}")
-        except Exception as e:
-            print(f"Error processing Nginx template: {e}")
+                http_output = http_template.replace('{{challenge}}', formatted_challenge).replace('{{port}}', str(port))
+                
+                url = f"https://{formatted_challenge}.ingeneer.ingeniums.club"
+                yaml_content["connection_info"] = str(
+                    yaml_content["connection_info"]
+                ).replace("{{url}}", url)
+
+                with open(http_output_path, 'a') as http_output_file:
+                    http_output_file.write(http_output)
+                    
+                print(f"HTTP configuration appended for {challenge_name}")
+            except Exception as e:
+                print(f"Error processing Nginx template: {e}")
+        else:
+            try:
+                with open('./config/stream.tmpl.conf', 'r') as stream_template_file:
+                    stream_template = stream_template_file.read()
+                
+                http_output = stream_template.replace('{{challenge}}', formatted_challenge).replace('{{port}}', str(port))
+                
+                url = f"https://{formatted_challenge}.ingeneer.ingeniums.club"
+                yaml_content["connection_info"] = str(
+                    yaml_content["connection_info"]
+                ).replace("{{url}}", url)
+
+                with open(stream_output_path, 'a') as stream_output_file:
+                    stream_output_file.write(http_output)
+                    
+                print(f"Stream configuration appended for {challenge_name}")
+            except Exception as e:
+                print(f"Error processing Nginx template: {e}")
 
     with open(yaml_path, "w") as yaml_file:
         yaml_file.write(yaml.dump(yaml_content))
@@ -72,7 +90,8 @@ def main():
         args.challenge_name,
         args.port,
         "./config/dns.txt",
-        "./config/nginx.conf"
+        "./config/http.conf",
+        "./config/stream.conf"
     )
 
 

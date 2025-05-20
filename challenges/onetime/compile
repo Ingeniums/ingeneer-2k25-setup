@@ -95,7 +95,6 @@ process_challenge () {
 
     echo "Processing..."
     ./process.py "$out_dir/challenge.yml" "$challenge_path"
-    echo "Updating DNS/Server configuration..."
     ./connect.py "$out_dir/challenge.yml" "$name" $port
 
     cat "$out_dir/challenge.yml" | \
@@ -145,7 +144,8 @@ fi
 
 rm -r $out/*
 echo > "./config/dns.txt"
-echo > "./config/nginx.conf"
+echo > "./config/http.conf"
+echo > "./config/stream.conf"
 for category in $(ls $src); do
     if [ ! -d "$src/$category" ]; then
         continue
