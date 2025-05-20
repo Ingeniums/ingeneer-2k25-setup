@@ -35,6 +35,20 @@ if [ $out = "" ]; then
     exit 1
 fi
 
+echo "Reading Mappings...."
+declare -A port_mappings
+
+if [ -f ./config/ports.txt ]; then
+    while read line; do
+        name=$(echo $line | awk '{print $1}')
+        port=$(echo $line | awk '{print $2}') 
+        port_mappings[$name]=$port
+    done < ./config/ports.txt
+
+else
+    touch ./config/ports.txt
+fi
+
 process_compose () {
     challenge_path="$src/$category/$name"
 
@@ -56,6 +70,13 @@ process_compose () {
         compose_path="$challenge_path/docker-compose.yaml.tmpl"
     else
         compose_path="$origin/compose.yaml.tmpl"
+    fi
+
+    assigned_port=${port_mappings["$category/$name"]}
+    if [ "$assigned_port" != "" ]; then
+        port=$assigned_port
+    else
+        port_mappings["$category/$name"]=$port
     fi
 
     container_name=$(echo $name | tr 'A-Z' 'a-z')
@@ -132,6 +153,14 @@ process_category () {
     done
 }
 
+finalize() {
+    echo "Saving ports..."
+    > ./config/ports.txt
+    for key in ${!port_mappings[@]}; do
+        echo "$key ${port_mappings[$key]}" >> ./config/ports.txt
+    done
+}
+
 if [ "$category" != "" ]; then
     if [ "$name" != "" ]; then
         process
@@ -139,6 +168,7 @@ if [ "$category" != "" ]; then
     fi
     echo "Processing category $category (provided) ----------------------------------------------------"
     process_category
+    finalize
     exit 0
 fi
 
@@ -153,3 +183,4 @@ for category in $(ls $src); do
     echo "Processing category $category ----------------------------------------------------"
     process_category
 done
+finalize
