@@ -2,6 +2,52 @@
 
 CONFIG_PATH="./configs"
 
+VENV_DIR="venv"
+
+SRC_DIR="../ready"
+
+# Redirect ctfcli command output to a temporary file to capture errors
+CTFCLI_OUTPUT=$(mktemp)
+# Ensure the temporary file is removed on script exit
+trap "rm -f $CTFCLI_OUTPUT" EXIT
+
+echo "--- CTFCLI Challenge Sync Script ---"
+
+echo "Checking for Python virtual environment in ${VENV_DIR}..."
+if [ -d "$VENV_DIR" ]; then
+    echo "Virtual environment found. Activating..."
+    source "${VENV_DIR}/bin/activate"
+else
+    echo "Virtual environment not found. Creating one..."
+    python3 -m venv "$VENV_DIR" > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to create virtual environment. Is python3 installed?"
+        exit 1
+    fi
+    echo "Virtual environment created. Activating..."
+    source "${VENV_DIR}/bin/activate"
+fi
+
+if [ -z "$VIRTUAL_ENV" ]; then
+    echo "Error: Failed to activate the virtual environment."
+    exit 1
+fi
+echo "Virtual environment activated."
+
+echo "Checking if ctfcli is installed..."
+if ! which ctfcli > /dev/null 2>&1; then
+    echo "ctfcli not found. Installing with pip..."
+    pip install ctfcli > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to install ctfcli. Please check your pip installation or environment."
+        deactivate
+        exit 1
+    fi
+    echo "ctfcli installed."
+else
+    echo "ctfcli found."
+fi
+
 if [ -d ./.ctf ]; then
     rm -r .ctf
 fi
