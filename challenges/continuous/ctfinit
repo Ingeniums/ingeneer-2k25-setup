@@ -2,8 +2,8 @@
 
 echo "Configuring private instance..."
 ctf init
-mv .ctf .private
+mv .ctf ./configs/.private
 
 echo "Configuring public instance..."
 ctf init
-mv .ctf .public
+mv .ctf ./configs/.private

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CTFCLI_CONFIG="$(pwd)"
+CTFCLI_CONFIG="$(pwd)/configs"
 
 if [ "$1" = "" ]; then
     echo "Please specify visibility: private/public..."
@@ -8,9 +8,9 @@ if [ "$1" = "" ]; then
 fi
 
 if [ "$1" = "private" ]; then
-    mv $CTFCLI_CONFIG/.private .ctf
+    mv $CTFCLI_CONFIG/.private ./.ctf
     echo "Changed to private configuration"
 else
-    mv $CTFCLI_CONFIG/.public .ctf
+    mv $CTFCLI_CONFIG/.public ./.ctf
     echo "Changed to public configuration"
 fi
