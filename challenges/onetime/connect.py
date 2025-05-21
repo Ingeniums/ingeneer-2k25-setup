@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 import argparse
 import yaml
+import os
 
+HTTP_CONFIG_PATH=os.getenv("HTTP_CONFIG_PATH")
+STREAM_CONFIG_PATH=os.getenv("STREAM_CONFIG_PATH")
 
 def format_challenge_name(challenge_name):
     return challenge_name.lower().replace('_', '-')
@@ -76,8 +79,8 @@ def main():
     parser.add_argument('yaml_path', help='Path to the YAML definition file')
     parser.add_argument('challenge_name', help='Name of the challenge')
     parser.add_argument('port', type=int, help='Port number')
-    # parser.add_argument('dns_output_path', help='Path to the DNS output file')
-    # parser.add_argument('nginx_output_path', help='Path to the Nginx configuration output file')
+    parser.add_argument('http_output_path', help='Path to the HTTP configuration output file')
+    parser.add_argument('stream_output_path', help='Path to the Stream configuration output file')
     
     args = parser.parse_args()
     
@@ -86,8 +89,8 @@ def main():
         args.challenge_name,
         args.port,
         "./config/dns.txt",
-        "./config/http.conf",
-        "./config/stream.conf"
+        args.http_output_path,
+        args.stream_output_path,
     )
 
 

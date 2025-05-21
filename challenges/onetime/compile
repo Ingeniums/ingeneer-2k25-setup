@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load paths
+source ./.env
+
 # general info
 URL="http://localhost"
 HOST="localhost"
@@ -122,7 +125,7 @@ process_challenge () {
 
     echo "Processing..."
     ./process.py "$out_dir/challenge.yml" "$challenge_path"
-    ./connect.py "$out_dir/challenge.yml" "$name" $port
+    ./connect.py "$out_dir/challenge.yml" "$name" $port $HTTP_CONFIG_PATH $STREAM_CONFIG_PATH
 
     cat "$out_dir/challenge.yml" | \
         sed "s/'{{initial}}'/$INITIAL/g" | \
@@ -179,9 +182,9 @@ if [ "$category" != "" ]; then
 fi
 
 rm -r $out/*
-echo > "./config/dns.txt"
-echo > "./config/http.conf"
-echo > "./config/stream.conf"
+> "./config/dns.txt"
+> $HTTP_CONFIG_PATH
+> $STREAM_CONFIG_PATH
 for category in $(ls $src); do
     if [ ! -d "$src/$category" ]; then
         continue
