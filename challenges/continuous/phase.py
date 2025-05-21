@@ -360,7 +360,7 @@ def main():
             else:
                 print("Google Drive operations skipped (authentication failed).")
 
-    if input("Perform Google Drive backup and setup? [y/n]: ").lower() == 'y':
+    if ENVIRONMENT != "production" and input("Perform Google Drive backup and setup? [y/n]: ").lower() == 'y':
         if not Path(CREDENTIALS_FILE).exists():
             print(f"Error: {CREDENTIALS_FILE} not found. Download from Google Cloud Console.")
         else:
