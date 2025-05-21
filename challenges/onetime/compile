@@ -140,7 +140,7 @@ process_challenge () {
 process () {
     process_compose
     process_challenge
-    port=$(( port + 1 ))
+    port=$(( port + 2 ))
 }
 
 process_category () {

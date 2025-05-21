@@ -26,10 +26,6 @@ def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, ht
             with open(dns_output_path, 'a') as dns_output_file:
                 dns_output_file.write(dns_output)
                 
-            host = f"{formatted_challenge}.ingeneer.ingeniums.club"
-            yaml_content["connection_info"] = str(
-                yaml_content["connection_info"]
-            ).replace("{{host}}", host).replace("{{port}}", str(port))
             print(f"DNS configuration appended for: {challenge_name}")
         except Exception as e:
             print(f"Error processing DNS template: {e}")
@@ -57,12 +53,12 @@ def process_yaml_definition(yaml_path, challenge_name, port, dns_output_path, ht
                 with open('./config/stream.tmpl.conf', 'r') as stream_template_file:
                     stream_template = stream_template_file.read()
                 
-                http_output = stream_template.replace('{{challenge}}', formatted_challenge).replace('{{port}}', str(port))
+                http_output = stream_template.replace('{{challenge}}', formatted_challenge).replace('{{inner}}', str(port)).replace('{{outer}}', str(port + 1))
                 
-                url = f"https://{formatted_challenge}.ingeneer.ingeniums.club"
+                host = f"{formatted_challenge}.ingeneer.ingeniums.club"
                 yaml_content["connection_info"] = str(
                     yaml_content["connection_info"]
-                ).replace("{{url}}", url)
+                ).replace("{{host}}", host).replace("{{port}}", str(port + 1))
 
                 with open(stream_output_path, 'a') as stream_output_file:
                     stream_output_file.write(http_output)
