@@ -39,12 +39,12 @@ def update_yaml_with_files(yaml_file, dir_path):
         }
         del data["value"]
         data["type"] = "dynamic"
-        tags = []
-        for tag in list(data["tags"]):
-            if tag not in ["warmup", "easy", "medium", "hard", "tough"]:
-                tags.append(tag)
-
-        data["tags"] = tags
+        # tags = []
+        # for tag in list(data["tags"]):
+        #     if tag not in ["warmup", "easy", "medium", "hard", "tough"]:
+        #         tags.append(tag)
+        #
+        # data["tags"] = tags
     else:
         data["value"] = 10
         data["type"] = "standard"
