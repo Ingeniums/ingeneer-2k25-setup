@@ -24,6 +24,7 @@ for i in range(len(diffs)):
     print(f"{i} - {diffs[i]}")
 
 value = float(points[diffs[int(input("Challenge: "))]])
+print(f"Original value: {value}")
 award = float(input("Player score: "))
 
 for phase in phases:
@@ -35,6 +36,7 @@ for phase in phases:
         diff = abs(now - start)
         delay = min((total_diff / 3), timedelta(hours=2))
         if diff <= delay:
+            award = award - 10
             print(f"Calculated Award: {award}")
             break
 
@@ -42,5 +44,5 @@ for phase in phases:
         print(diff)
         new_value = max(value / 3, value - (((diff // timedelta(hours=1)) / 12) * value))
         print(f"Current challenge value: {new_value}")
-        calculated_award = (award / value) * new_value
+        calculated_award = (award / value) * new_value - 10
         print(f"Calculated award: {calculated_award}")
