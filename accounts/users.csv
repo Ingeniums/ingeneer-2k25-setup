@@ -1,5 +1,65 @@
-Username,Email Address,Team name (exactly 4 members)
-user1,marzoukayouness@gmail.com,TeamA
-user2,merzoukayouness@gmail.com,TeamA
-user3,ya.merzouka@esi-sba.dz,TeamB
-user4,merzoukayouness@gmail.com,TeamB
+Horodateur,Full Name,Email Address,Phone Number ,Are you student ?,Study year,what is your favorite category?,Team name (exactly 4 members),Username,Discord ID,
+15/05/2025 19:09:32,khebouza ahmed walid,aw.khebouza@esi-sba.dz,0770123288,yes,2CP/L2,Problem solving,404 squad,N0x,_noxxx_,Gryffondor
+15/05/2025 21:59:33,Bouzara Tarek,t.bouzara@esi-sba.dz,0659540003,yes,2CP/L2,Design,404 squad,Taski,tetawskii #5970,
+15/05/2025 23:09:52,Arifi Yassine,y.arifi@esi-sba.dz ,0561578910,yes,2CP/L2,2CP/L2,404 squad,Mocho gracia,yassine._ar#4253,
+15/05/2025 19:28:00,Touil Islam Djamel Eddine ,id.touil@esi-sba.dz,0556595293,yes,2CP/L2,"Web, Problem solving, Networking, Devops",404 squad,isltl,isltl,
+17/05/2025 00:30:59,Bouguetaia kawther zeyneb ,kz.bouguetaia@esi-sba.dz,0668478213,yes,2CP/L2,Design,Ctrl+V,Zeyneb not zineb,1250173543518568471,Hufflepuff
+17/05/2025 10:18:23,Hiba menacer,h.menacer@esi-sba.dz,0552820394,yes,2CP/L2,"Web, Design, Problem solving",Ctrl+V,Hiba,hiba7_,
+17/05/2025 13:24:16,Bettahar kheira ,K.bettahar@esi-sba.dz,0696329850,yes,1CP/L1,"Web, Design, Problem solving",Ctrl+V,Kheira,Idk,
+17/05/2025 13:37:35,Nadjiba Kacimi,n.kacimi@esi-sba.dz,0654297205,yes,1CP/L1,Forensics,Ctrl+V,...P...,nadjiba.km,
+13/05/2025 21:25:58,Slimani Fares,f.slimani@esi-sba.dz,0674722853,yes,1CS/L3,"Cryptography, Problem solving",Double 7,fares,slimani_fares,Slytherin
+13/05/2025 21:28:54,hakkas yacine,y.hakkas@esi-sba.dz,0655310399,yes,2CS/M1,"Problem solving, Networking",Double 7,profile1,el_hk88,
+13/05/2025 21:39:34,Lebaili Mohamed Ouail,mo.lebaili@esi-sba.dz,0540576016,yes,2CS/M1,Networking,Double 7,Wael_lbl,wael_lbl,
+13/05/2025 21:46:29,Benhiba fodhil,f.benhiba@esi-sba.dz,0797530466,yes,1CS/L3,Web,Double 7,F0DH1L,f0dh1l,
+17/05/2025 18:48:51,Zareb Toufik Ibrahim,zarebtoufik105@gmail.com,0562295634,yes,1CS/L3,"Cryptography, Forensics, Reverse, Problem solving, Networking, Devops",Hunt_C,Abraham,abraham105,Hufflepuff
+17/05/2025 18:52:20,DIB Abdelkrim Yassine Taki-Eddine ,dibabdelkrimyt98@gmail.com,0560138750,yes,1CS/L3,"Cryptography, Problem solving, Networking",Hunt_C,dibabdelkrimyt,dibabdelkrimyt#2110 ,
+17/05/2025 18:56:05,Mostefaoui Mohammed Boualem ,mohammedmostefaoui2@gmail.com,067234290y,yes,1CS/L3,"Cryptography, Web, Problem solving",Hunt_C,Mohammed ,1171521701801103453,
+17/05/2025 20:53:14,TOUATE Slimane Mustapha ,touat_mustapha@outlook.com,+213793047832,yes,1CS/L3,"Cryptography, Web, Forensics, Reverse, Problem solving",Hunt_C,touatslimane,/,
+13/05/2025 21:29:44,Belmaksene souhaib,S.belmaksene@esi-sba.dz,+213561340762,yes,1CS/L3,Web,La masia,S443.x,Ouby#1589,Slytherin
+13/05/2025 21:39:15,Ahmed,aa.mellel@esi-sba.dz,0655648296,yes,1CS/L3,"Design, Problem solving",La masia,Ahmed,Aness#1673,
+13/05/2025 21:47:55,Bounouala Mohamed Islem,mi.bounouala@esi-sba.dz,0542893268,yes,1CS/L3,"Cryptography, Web, Problem solving",La masia,Mi.islem02,medislem0075,
+13/05/2025 22:13:47,Bengherabi Mohamed amine ,ma.bengherabi@esi-sba.dz,0665663097,yes,1CS/L3,"Forensics, Reverse, Problem solving, Networking",La masia,am1n3.B3ng,amine._beng,
+15/05/2025 22:48:49,Derradji Mohamed Rafik,derradjir34@gmail.com,0670312007,yes,1CP/L1,"Cryptography, Web",Mal Katsu,bolahia,rafik_der,Slytherin
+15/05/2025 22:48:54,BENANTAR ABDERRAOUF ,raoufbenantar2@gmail.com,0799867546,yes,1CP/L1,"Forensics, Networking",Mal Katsu,SN1TR4 ,Raouf_benantar,
+15/05/2025 23:15:38,benkrouidem Nassireddine,n.benkrouidem@esi-sba.dz,0540165554,yes,1CP/L1,"Cryptography, Reverse",Mal Katsu,B & 7,Nasro,
+15/05/2025 23:27:49,BENHALLA mohammed Imad Eddine,mi.benhalla@esi-sba.dz,0561584920,yes,2CP/L2,"Reverse, Problem solving",Mal Katsu,PwnY1m4d,imad200500,
+14/05/2025 22:20:29,AMAMRA AKRAM MEHDI ,am.amamra@esi-sba.dz,797758587,yes,1CS/L3,"Forensics, Problem solving, Networking",NEURONIX ,Th3Kr1M0,thekrimo,Gryffondor
+14/05/2025 22:18:33,Mansouri Mohamed Nassim ,mn.mansouri@esi-sba.dz,656639153,yes,1CS/L3,"Web, Forensics, Reverse, Design, Problem solving, Devops",NEURONIX ,Graychi,Graychii,
+14/05/2025 22:19:08,Touahri Khalid,k.touahri@esi-sba.dz,0541104306,yes,2CS/M1,"Cryptography, Web, Forensics, Reverse, Design, Problem solving, Networking, Devops",NEURONIX ,garidi,itskarudo,
+14/05/2025 22:19:50,Akram KAID,a.kaid@esi-sba.dz,0770293541,yes,1CS/L3,"Cryptography, Design, Networking",NEURONIX ,Akram_kd,akramm_off,
+14/05/2025 03:01:20,Boutalbi samy ,s.boutalbi@esi-sba.dz,0771420736,yes,2CP/L2,"Web, Forensics, Networking, Devops",Prmtalent,P4lm3r,Sambtb,Slytherin
+13/05/2025 22:55:02,Hadouas Abderraouf ,a.hadouas@esi-sba.dz,0542858038,yes,2CP/L2,"Reverse, Problem solving",Prmtalent,/dev/Hads,Raouf_Hds#9010,
+14/05/2025 11:55:23,Anis Boulgheb,a.boulgheb@esi-sba.dz,0540273167,yes,,Design,Prmtalent,Anis_1916,an___is,
+14/05/2025 11:55:31,Lachoub Mohammed Zineddine,mz.lachoub@esi-sba.dz,0669815757,yes,2CP/L2,"Cryptography, Problem solving, Devops",Prmtalent,Zinoulch,294800_,
+13/05/2025 21:40:25,Yanis AITOUALI,y.aitouali@esi-sba.dz,0663024604,yes,2CP/L2,"Problem solving, Devops",solid gear metal programmers,yanis,y8w3ly,Gryffondor
+14/05/2025 09:00:41,Mansouri Amine Abdelkader,aa.mansouri@esi-sba.dz,0797347200,yes,1CP/L1,"Design, Problem solving",solid gear metal programmers,min0sy,Min0sy,
+14/05/2025 18:50:49,Cherifi Houdaifa,h.cherifi@esi-sba.dz,0794276822,yes,2CP/L2,"Reverse, Problem solving, Networking",solid gear metal programmers,スーパーハッカー,nothoudaifa,
+15/05/2025 22:45:04,Chementel Naoufel,n.chementel@esi-sba.dz,0792055954,yes,2CP/L2,"Design, Problem solving",solid gear metal programmers,solxire.,Naoufxl88#2365,
+14/05/2025 14:45:26,Ferhoune Amine,a.ferhoune@esi-sba.dz,0699028662,yes,2CP/L2,"Forensics, Problem solving",The 221B,K1n6 B0N3,amiskull,Gryffondor
+14/05/2025 14:52:08,KHERRA Mohamed Charafeddine,mohamedcharafeddinekherra@gmail.com,0662430501,yes,2CP/L2,"Cryptography, Design, Problem solving",The 221B,M'h4nd,vardino_moh,
+14/05/2025 19:50:34,MEDDOUR AHMED REDHA,ar.meddour@esi-sba.dz,0553495091,yes,2CP/L2,"Forensics, Reverse, Problem solving",The 221B,R3dha,redha_iwnl,
+14/05/2025 20:02:45,Belhadji aboubakr essedik,a.belhadji@esi-sba.dz ,773469644,yes,2CP/L2,"Cryptography, Problem solving, Networking, Devops",The 221B,B4K1R0u,aboubakrblh_97606,
+14/05/2025 00:04:25,Lachi Mohamed Amine,ma.lachi@esi-sba.dz,0699060957,yes,2CP/L2,"Web, Forensics",zadmin,0xapma,lachiamine,Hufflepuff
+14/05/2025 00:07:39,Taleb Hatem,h.taleb@esi-sba.dz,0698585406,yes,1CS/L3,"Web, Networking, Devops",zadmin,hatem,1212509676533714955,
+16/05/2025 22:47:17,Ahmed Mohamed houssam,mh.ahmed@esi-sba.dz,0655900411,yes,1CS/L3,"Reverse, Design, Problem solving, Networking",zadmin,meev,meev7348,
+16/05/2025 23:55:42,Ishaq Boukkadah ,ishaqboukaddah@gmail.com,0542975308,yes,1CS/L3,"Cryptography, Web, Problem solving",zadmin,Isaac,1030256657017614356,
+16/05/2025 19:59:25,Meflah Yousra,y.meflah@esi-sba.dz,0562683192,yes,2CS/M1,"Web, Design, Problem solving, Networking",Gradients,Youli,yousra_youli,Ravenclaw
+16/05/2025 20:07:45,CHAIB Fakhreddine Fouzi,ff.chaib@esi-sba.dz,0795128162,yes,2CS/M1,"Cryptography, Forensics, Reverse",Gradients,Fakhreddine,fakher_88,
+16/05/2025 20:10:24,Ouchene HibetElrahmane ,he.ouchene@esi-sba.dz,0699543870,yes,2CS/M1,"Web, Problem solving, Networking",Gradients,haboush,#3601,
+16/05/2025 20:19:05,Belkorche Widad,w.belkorche@esi-sba.dz,0558413875,yes,2CS/M1,"Web, Design, Problem solving, Networking, Devops",Gradients,widad,widadbel_03398,
+13/05/2025 21:48:47,oulahcene yousra,y.oulahcene@esi-sba.dz,0659495170,yes,2CP/L2,Web,Ingeher,leftine22_00478,1307359621245304858,Ravenclaw
+14/05/2025 11:19:39,Yakout zergoug ,y.zergoug@esi-sba.dz,0795303883,yes,2CP/L2,"Web, Design, Devops",Ingeher,Yakout,57226,
+14/05/2025 12:17:08,Khelifati Raihana ,r.khelifati@esi-sba.dz,0561148079,yes,2CP/L2,"Web, Design",Ingeher,Raihana,296009,
+14/05/2025 14:50:14,YAHDIH MED SALEM Nouara,n.yahdihmohamedsalem@esi-sba.dz,0540062615,yes,2CP/L2,Web,Ingeher,nini,beabaduobee,
+16/05/2025 16:59:56,Mehtougui aya,a.mehtougui@esi-sba.dz,+213 5 40313780,yes,2CS/M1,"Cryptography, Reverse, Problem solving, Devops",Spelled Roses,ay4_m9,pickylattee56_70656,Ravenclaw
+16/05/2025 17:08:45,Amira Laichaoui,A.laichaoui@esi-sba.dz,0699187525,yes,1CS/L3,"Web, Forensics, Reverse, Networking",Spelled Roses,r0oki3,miraa1117,
+16/05/2025 17:19:01,Daamache Achouak,a.daamache@esi-sba.dz,+21374961412,yes,2CS/M1,"Web, Problem solving, Devops",Spelled Roses,Aya,777499045618515978,
+16/05/2025 19:23:15,Chellal aicha,a.chellal@esi-sba.dz,0798978913,yes,3CS/M2,"Design, Problem solving",Spelled Roses,Hannou,@Hananekhedim,
+13/05/2025 22:47:29,Nouri maram,m.nouri@esi-sba.dz,779686041,yes,2CP/L2,"Cryptography, Web, Design",Crtl +C,Maram,maram5683,Hufflepuff
+13/05/2025 23:53:11,Ghanem Ouarda,o.ghanem@esi-sba.dz,0671260405,yes,2CP/L2,"Cryptography, Forensics, Design",Crtl +C,ouarda_2200,Ouarda,
+15/05/2025 14:47:56,Houda khaldi,Ho.khaldi@esi-sba.dz,0549803074,yes,2CP/L2,"Web, Design, Problem solving",Ctrl +C,Houda,Iidoleran,
+,ikram messouadi,i.messouadi@esi-sba.dz,,,,,Ctrl +C,ikram,,
+17/05/2025 12:07:22,Khedari Abdelbasset,a.khedari@esi-sba.dz,0664355613,yes,2CP/L2,"Web, Reverse, Design",z0lf1x,Axio,1308531870065102849,Ravenclaw
+17/05/2025 12:16:38,Mehdi mohamed amdjad,ma.mehdi@esi-sba.dz,0665557886,yes,1CS/L3,"Forensics, Reverse, Networking",z0lf1x,4mg3d,amdjadmoh,
+,Bendjelloul Abdelhakim,a.bendjelloul@esi-sba.dz,,,,,z0lf1x,Abdelhakim,,
+,Benahmed djilali,j.benahmed@esi-sba.dz,,,,,z0lf1x,djilali,,

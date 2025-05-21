@@ -119,8 +119,8 @@ upload_challenge () {
     fi
 }
 
-challenge="$1"
-if [ "$challenge" != "" ]; then
+single_upload () {
+    challenge=$1
     challenge_path="$SRC_DIR/$challenge"
     if [ -f "${challenge_path}/challenge.yml" ]; then
         upload_challenge $challenge $challenge_path
@@ -130,17 +130,33 @@ if [ "$challenge" != "" ]; then
     fi
     echo "Deactivating virtual environment."
     deactivate
+}
+
+challenge="$1"
+if [ "$challenge" != "" ]; then
+    ./switch private
+    single_upload $1
+    ./switch public
+    single_upload $1
     exit
 fi
 
-find "$SRC_DIR" -mindepth 1 -maxdepth 1 -type d | while read category_dir; do
-    category_name=$(basename "$category_dir")
+multi_upload () {
+    find "$SRC_DIR" -mindepth 1 -maxdepth 1 -type d | while read category_dir; do
+            category_name=$(basename "$category_dir")
 
-    find "$category_dir" -mindepth 1 -maxdepth 1 -type d | while read challenge_dir; do
-        challenge_name=$(basename "$challenge_dir")
-        upload_challenge "$category_name/$challenge_name" $challenge_dir
+            find "$category_dir" -mindepth 1 -maxdepth 1 -type d | while read challenge_dir; do
+            challenge_name=$(basename "$challenge_dir")
+            upload_challenge "$category_name/$challenge_name" $challenge_dir
+        done
     done
-done
+}
+
+./switch private
+multi_upload
+./switch public
+multi_upload
+
 
 echo "Finished processing challenges."
 echo "Deactivating virtual environment."

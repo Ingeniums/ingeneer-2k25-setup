@@ -97,7 +97,7 @@ def save_challenges_to_csv(challenges_list, output_csv_path=OUTPUT_FILE):
         return
     
     # Define CSV headers based on dictionary keys
-    fieldnames = ["id", "category", "author", "difficulty", "name", "path"]
+    fieldnames = ["id", "name", "category", "author", "difficulty", "path"]
     
     try:
         with open(output_csv_path, 'w', newline='') as csv_file:

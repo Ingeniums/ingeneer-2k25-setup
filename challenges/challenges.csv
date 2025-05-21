@@ -1,59 +1,59 @@
-id,category,author,difficulty,name,path
-0,reverse,4ym3n,medium,ymmm,reverse/ymm
-1,reverse,4ym3n,medium,HogwartsVault,reverse/HogwartsVault
-2,reverse,4ym3n,warmup,Alohomora,reverse/Alohomora
-3,reverse,T4k1,hard,LuckyDice-v1,reverse/luckydice-v1
-4,reverse,4ym3n,medium,Protego,reverse/Protego
-5,reverse,4ym3n,easy,ELF,reverse/ELF
-6,reverse,4ym3n,warmup,The Basilisk's Gaze,reverse/Basilisks-Gaze
-7,reverse,T4k1,easy,LuckyDice-v0,reverse/luckydice-v0
-8,reverse,T4k1,medium,NotBF,reverse/some-lang
-9,reverse,4ym3n,medium,matrix,reverse/matrix
-10,reverse,4ym3n,medium,The Time-Turner’s Secret,reverse/timeTurnersSecret
-11,devops,youness,medium,The Fidelius Charm,devops/the-fidelius-charm
-12,devops,1nitramfs,medium,Ministry Form Checker,devops/Ministry-Form-Checker
-13,devops,1nitramfs,easy,The Vanishing Cabinet,devops/the-vanishing-cabinet
-14,devops,youness,warmup,Capsula Enchanta,devops/Capsula-Enchanta
-15,web,1nitramfs,easy,Head Curator,web/head_curator
-16,web,1nitramfs,hard,Room of Requirement,web/room_of_requirement
-17,web,1nitramfs,easy,House Of Spells,web/house_of_spells
-18,web,ilyes_haddad_,medium,The Hidden Panel 2,web/the-hidden-panel-2
-19,web,{sirmoncef},easy,Collision,web/collision
-20,forensics,{sirmoncef},easy,The Howler Secret,forensics/The-Howler-Secret
-21,forensics,{sirmoncef},medium,Snape's Document,forensics/Snape's-document
-22,forensics,{sirmoncef},hard,Pensieve Dump,forensics/Pensieve-Dump
-23,forensics,{sirmoncef},easy,The Forbidden Packet,forensics/The-Forbidden-Packet
-24,forensics,{sirmoncef},medium,The Gitmark,forensics/The-Gitmark
-25,crypto,Yasser,warmup,The ArithmaTrap,crypto/arithma-trap
-26,crypto,Yasser,hard,vrai sahl,crypto/vrai-sahl
-27,crypto,Yasser,easy,Egg Clue,crypto/Egg-clue
-28,crypto,Yasser,medium,The Trace,crypto/trace
-29,crypto,Yasser,medium,Chamber of Secrets,crypto/Chamber-of-Secrets
-30,crypto,Yasser,medium,Wizard’s Chess,crypto/wizard-chess
-31,crypto,Yasser,easy,The Forbidden Forest,crypto/Forbidden-Forest
-32,crypto,Yasser,warmup,Parseltongue Backdoor,crypto/Parseltongue-Backdoor
-33,crypto,Yasser,easy,Karkaroff's Curse,crypto/Karkaroffs-Curse
-34,problem_solving,hxuu,hard,Circle of Shadows,problem_solving/circle-of-shadows
-35,problem_solving,hxuu,hard,The Unseen Curse,problem_solving/the-unseen-curse
-36,networking,L4rTiStE,medium,After-Dark Detour,networking/After-Dark-Detour
-37,networking,L4rTiStE,easy,The Lost Artifacts,networking/The-Lost-Artifacts
-38,networking,L4rTiStE,hard,Break_a_rule,networking/Break-a-rule
-39,networking,L4rTiStE,easy,The Sorting Hat,networking/The-Sorting-Router
-40,networking,L4rTiStE,hard,Magic Bonds,networking/Magic-Bonds
-41,networking,L4rTiStE,easy,The Switch of Secrets,networking/The-Switch-of-Secrets
-42,networking,L4rTiStE,easy,The forgotten spell,networking/The-Forgotten-spell
-43,networking,L4rTiStE,medium,Two_in_one,networking/Two_in_one
-44,misc,phues,hard,Jigsaw Falling Into Place,misc/jigsaw-challenge
-45,misc,1nitramfs,medium,Wand Of Airthmancy - Medium,misc/wand-of-airthmancy
-46,misc,ilyes_haddad_,easy,The Hidden Panel,misc/the-hidden-panel
-47,design,Dahoun Manel,easy,Nox–Extinguishes light,design/Nox-Extinguishes-light
-48,design,Mountassar,tough,The founding fathers,design/The-founding-fathers
-49,design,Mountassar,easy,Clone Summoning,design/Clone-Summoning
-50,design,Dahoun Manel,, The Writing’s on the Wall,design/The-Writing’s-on-the-Wall
-51,design,Dahoun Manel,, Draught of Living Death page,design/Draught-of-Living-Death-page
-52,design,Dahoun Manel,medium,The Packing Charm,design/The-Packing-Charm
-53,design,Dahoun Manel,medium,Expecto Patronum,design/Expecto-Patronum
-54,design,Dahoun Manel,easy,Reparo,design/Reparo
-55,design,Dahoun Manel,warmup,Lumos,design/Lumos
-56,design,Mountassar,hard,Crest of the College,design/Crest-of-the-College
-57,design,Dahoun Manel,medium,Signum Revelio,design/Signum-Revelio
+id,name,category,author,difficulty,path
+0,The Howler Secret,forensics,{sirmoncef},easy,forensics/The-Howler-Secret
+1,The Forbidden Packet,forensics,{sirmoncef},easy,forensics/The-Forbidden-Packet
+2,Snape's Document,forensics,{sirmoncef},medium,forensics/Snape's-document
+3,The Gitmark,forensics,{sirmoncef},medium,forensics/The-Gitmark
+4,Pensieve Dump,forensics,{sirmoncef},hard,forensics/Pensieve-Dump
+5,Protego,reverse,4ym3n,medium,reverse/Protego
+6,LuckyDice-v0,reverse,T4k1,easy,reverse/luckydice-v0
+7,The Time-Turner’s Secret,reverse,4ym3n,medium,reverse/timeTurnersSecret
+8,matrix,reverse,4ym3n,medium,reverse/matrix
+9,ELF,reverse,4ym3n,easy,reverse/ELF
+10,The Basilisk's Gaze,reverse,4ym3n,warmup,reverse/Basilisks-Gaze
+11,LuckyDice-v1,reverse,T4k1,hard,reverse/luckydice-v1
+12,HogwartsVault,reverse,4ym3n,medium,reverse/HogwartsVault
+13,NotBF,reverse,T4k1,medium,reverse/some-lang
+14,ymmm,reverse,4ym3n,medium,reverse/ymm
+15,Alohomora,reverse,4ym3n,warmup,reverse/Alohomora
+16,Wand Of Airthmancy - Medium,misc,1nitramfs,medium,misc/wand-of-airthmancy
+17,Jigsaw Falling Into Place,misc,phues,hard,misc/jigsaw-challenge
+18,The Hidden Panel,misc,ilyes_haddad_,easy,misc/the-hidden-panel
+19,Ministry Form Checker,devops,1nitramfs,medium,devops/Ministry-Form-Checker
+20,Capsula Enchanta,devops,youness,warmup,devops/Capsula-Enchanta
+21,The Fidelius Charm,devops,youness,medium,devops/the-fidelius-charm
+22,The Vanishing Cabinet,devops,1nitramfs,easy,devops/the-vanishing-cabinet
+23,Two_in_one,networking,L4rTiStE,medium,networking/Two_in_one
+24,The Lost Artifacts,networking,L4rTiStE,easy,networking/The-Lost-Artifacts
+25,The Sorting Hat,networking,L4rTiStE,easy,networking/The-Sorting-Router
+26,The Switch of Secrets,networking,L4rTiStE,easy,networking/The-Switch-of-Secrets
+27,The forgotten spell,networking,L4rTiStE,easy,networking/The-Forgotten-spell
+28,Magic Bonds,networking,L4rTiStE,hard,networking/Magic-Bonds
+29,After-Dark Detour,networking,L4rTiStE,medium,networking/After-Dark-Detour
+30,Break_a_rule,networking,L4rTiStE,hard,networking/Break-a-rule
+31,The Hidden Panel 2,web,ilyes_haddad_,medium,web/the-hidden-panel-2
+32,Collision,web,{sirmoncef},easy,web/collision
+33,Head Curator,web,1nitramfs,easy,web/head_curator
+34,House Of Spells,web,1nitramfs,easy,web/house_of_spells
+35,Room of Requirement,web,1nitramfs,hard,web/room_of_requirement
+36,Circle of Shadows,problem_solving,hxuu,hard,problem_solving/circle-of-shadows
+37,The Unseen Curse,problem_solving,hxuu,hard,problem_solving/the-unseen-curse
+38, Draught of Living Death page,design,Dahoun Manel,,design/Draught-of-Living-Death-page
+39,Lumos,design,Dahoun Manel,warmup,design/Lumos
+40,Clone Summoning,design,Mountassar,easy,design/Clone-Summoning
+41,Signum Revelio,design,Dahoun Manel,medium,design/Signum-Revelio
+42,Reparo,design,Dahoun Manel,easy,design/Reparo
+43,Crest of the College,design,Mountassar,hard,design/Crest-of-the-College
+44,Expecto Patronum,design,Dahoun Manel,medium,design/Expecto-Patronum
+45,Nox–Extinguishes light,design,Dahoun Manel,easy,design/Nox-Extinguishes-light
+46, The Writing’s on the Wall,design,Dahoun Manel,warmup,design/The-Writing’s-on-the-Wall
+47,The founding fathers,design,Mountassar,tough,design/The-founding-fathers
+48,The Packing Charm,design,Dahoun Manel,medium,design/The-Packing-Charm
+49,The ArithmaTrap,crypto,Yasser,warmup,crypto/arithma-trap
+50,Egg Clue,crypto,Yasser,easy,crypto/Egg-clue
+51,The Forbidden Forest,crypto,Yasser,easy,crypto/Forbidden-Forest
+52,Wizard’s Chess,crypto,Yasser,medium,crypto/wizard-chess
+53,Parseltongue Backdoor,crypto,Yasser,warmup,crypto/Parseltongue-Backdoor
+54,The Trace,crypto,Yasser,medium,crypto/trace
+55,Chamber of Secrets,crypto,Yasser,medium,crypto/Chamber-of-Secrets
+56,vrai sahl,crypto,Yasser,hard,crypto/vrai-sahl
+57,Karkaroff's Curse,crypto,Yasser,easy,crypto/Karkaroffs-Curse
