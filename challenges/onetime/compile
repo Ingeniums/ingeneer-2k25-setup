@@ -114,6 +114,13 @@ process_challenge () {
         sed "s/{{hard}}/$HARD/g" | \
         sed "s/{{tough}}/$TOUGH/g" > "$out_dir/challenge.yml"
 
+    assigned_port=${port_mappings["$category/$name"]}
+    if [ "$assigned_port" != "" ]; then
+        port=$assigned_port
+    else
+        port_mappings["$category/$name"]=$port
+    fi
+
     echo "Processing..."
     ./process.py "$out_dir/challenge.yml" "$challenge_path"
     ./connect.py "$out_dir/challenge.yml" "$name" $port
