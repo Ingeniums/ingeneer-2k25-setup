@@ -5,6 +5,7 @@ import subprocess
 import sys
 import yaml
 from pathlib import Path
+from dotenv import load_dotenv
 
 # --- Google Drive Imports ---
 from google.auth.transport.requests import Request
@@ -12,11 +13,13 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 # from googleapiclient.http import MediaFileUpload # Kept if future use
+load_dotenv()
 
 # --- Configuration ---
 CHALLENGES_CSV = "../challenges.csv"
 CONFIG = "../../config.yaml"
 ROOT = "../ready/"
+ENVIRONMENT=os.getenv("ENVIRONMENT")
 
 # --- Google Drive Configuration ---
 DRIVE_BASE_PATH_ON_DRIVE = "2024/2025|TT|ingeneer" # Example: "MyCTFEvent|Data"
@@ -224,7 +227,7 @@ def update_challenge_yml(challenge_path, root_dir, set_visible=True, drive_servi
             print(f"Challenge {challenge_path}: state set to {desired_state}.")
         
         if set_visible and drive_service and challenge_uploads_parent_folder_id:
-            if challenge_data.get('submit') == 'drive':
+            if challenge_data.get('submit') == 'drive' and ENVIRONMENT != "production":
                 challenge_name_for_folder = challenge_data.get('name')
                 if challenge_name_for_folder:
                     print(f"  Challenge '{challenge_name_for_folder}' uses Drive submission. Ensuring folder exists...")
