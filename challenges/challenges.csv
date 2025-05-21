@@ -64,3 +64,4 @@ id,name,category,author,difficulty,path
 62,asm,reverse,4ym3n,warmup,reverse/asm
 63,Polyjuice Passwords,reverse,4ym3n,easy,reverse/PolyjuicePasswords
 64,Tracking the Tracks,misc,{sirmoncef},medium,misc/Tracking-the-Tracks
+65,Calm,misc,ihaveabananaandimafraidtouseit,medium,misc/calm

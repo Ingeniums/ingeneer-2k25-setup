@@ -14,4 +14,5 @@ misc/the-hidden-panel 30062
 reverse/some-lang 30104
 problem_solving/Primos 30122
 misc/wand-of-airthmancy 30058
+problem_solving/the-forbidden-potion 30124
 reverse/Protego 30088
