@@ -374,7 +374,7 @@ def main():
         return
 
     selected_phase_key = select_phase(phases_config)
-    if input("Add unsolved challenges to selected phase? [y/n]").lower() == "y":
+    if input("Add unsolved challenges to selected phase? [y/n]: ").lower() == "y":
         subprocess.run("./unsolved.py")
         with open("./out/unsolved.yaml", "r") as unsolved_file:
             unsolved = yaml.safe_load(unsolved_file.read())
