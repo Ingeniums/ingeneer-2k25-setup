@@ -41,6 +41,7 @@ phases:
   - 26
   - 3
   - 5
+  - 24
   phase2:
   - 
   phase3:
