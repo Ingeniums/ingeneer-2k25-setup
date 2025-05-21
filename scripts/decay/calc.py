@@ -1,16 +1,29 @@
 from datetime import datetime, timedelta
 
-day1 = "16-05-2025"
-day2 = "17-05-2025"
+day1 = "21-05-2025"
+day2 = "22-05-2025"
 phases = [
     [f"{day1}T20:00", f"{day1}T21:30"],
     [f"{day1}T22:00", f"{day2}T7:30"],
-    [f"{day2}T8:30", f"{day2}T12:00"],
-    [f"{day2}T13:30", f"{day2}T20:00"],
+    [f"{day2}T8:00", f"{day2}T15:00"],
+    [f"{day2}T15:30", f"{day2}T20:00"],
 ]
 
+points = {
+    "warmup": 50,
+    "easy": 100,
+    "medium": 250,
+    "hard": 400,
+    "tough": 500,
+}
+
 # decay by 1/9 of the value
-value = float(input("Challenge value (total points): "))
+print("Choose difficulty:")
+diffs = list(points.keys())
+for i in range(len(diffs)):
+    print(f"{i} - {diffs[i]}")
+
+value = float(points[diffs[int(input("Challenge: "))]])
 award = float(input("Player score: "))
 
 for phase in phases:
