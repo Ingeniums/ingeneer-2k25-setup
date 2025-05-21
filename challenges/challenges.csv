@@ -61,3 +61,6 @@ id,name,category,author,difficulty,path
 59,vrai sahl,crypto,Yasser,hard,crypto/vrai-sahl
 60,Karkaroff's Curse,crypto,Yasser,easy,crypto/Karkaroffs-Curse
 61,Primos,problem_solving,Tarek,hard,problem_solving/Primos
+62,asm,reverse,4ym3n,warmup,reverse/asm
+63,Polyjuice Passwords,reverse,4ym3n,easy,reverse/PolyjuicePasswords
+64,Tracking the Tracks,misc,{sirmoncef},medium,misc/Tracking-the-Tracks
