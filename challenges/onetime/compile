@@ -76,6 +76,7 @@ process_compose () {
     if [ "$assigned_port" != "" ]; then
         port=$assigned_port
     else
+        echo $port
         port_mappings["$category/$name"]=$port
     fi
 
@@ -117,8 +118,6 @@ process_challenge () {
     assigned_port=${port_mappings["$category/$name"]}
     if [ "$assigned_port" != "" ]; then
         port=$assigned_port
-    else
-        port_mappings["$category/$name"]=$port
     fi
 
     echo "Processing..."
@@ -139,8 +138,8 @@ process_challenge () {
 }
 
 process () {
-    process_challenge
     process_compose
+    process_challenge
     port=$(( port + 1 ))
 }
 
