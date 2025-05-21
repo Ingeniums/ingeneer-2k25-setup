@@ -4,10 +4,10 @@ id,name,category,author,difficulty,path
 2,Snape's Document,forensics,{sirmoncef},medium,forensics/Snape's-document
 3,The Gitmark,forensics,{sirmoncef},medium,forensics/The-Gitmark
 4,Pensieve Dump,forensics,{sirmoncef},hard,forensics/Pensieve-Dump
-5,Protego,reverse,4ym3n,medium,reverse/Protego
+5,Protego,reverse,4ym3n,,reverse/Protego
 6,LuckyDice-v0,reverse,T4k1,easy,reverse/luckydice-v0
 7,The Time-Turner’s Secret,reverse,4ym3n,medium,reverse/timeTurnersSecret
-8,matrix,reverse,4ym3n,medium,reverse/matrix
+8,matrix,reverse,4ym3n,hard,reverse/matrix
 9,ELF,reverse,4ym3n,easy,reverse/ELF
 10,The Basilisk's Gaze,reverse,4ym3n,warmup,reverse/Basilisks-Gaze
 11,LuckyDice-v1,reverse,T4k1,hard,reverse/luckydice-v1
@@ -35,25 +35,28 @@ id,name,category,author,difficulty,path
 33,Head Curator,web,1nitramfs,easy,web/head_curator
 34,House Of Spells,web,1nitramfs,easy,web/house_of_spells
 35,Room of Requirement,web,1nitramfs,hard,web/room_of_requirement
-36,Circle of Shadows,problem_solving,hxuu,hard,problem_solving/circle-of-shadows
-37,The Unseen Curse,problem_solving,hxuu,hard,problem_solving/the-unseen-curse
-38, Draught of Living Death page,design,Dahoun Manel,,design/Draught-of-Living-Death-page
-39,Lumos,design,Dahoun Manel,warmup,design/Lumos
-40,Clone Summoning,design,Mountassar,easy,design/Clone-Summoning
-41,Signum Revelio,design,Dahoun Manel,medium,design/Signum-Revelio
-42,Reparo,design,Dahoun Manel,easy,design/Reparo
-43,Crest of the College,design,Mountassar,hard,design/Crest-of-the-College
-44,Expecto Patronum,design,Dahoun Manel,medium,design/Expecto-Patronum
-45,Nox–Extinguishes light,design,Dahoun Manel,easy,design/Nox-Extinguishes-light
-46, The Writing’s on the Wall,design,Dahoun Manel,warmup,design/The-Writing’s-on-the-Wall
-47,The founding fathers,design,Mountassar,tough,design/The-founding-fathers
-48,The Packing Charm,design,Dahoun Manel,medium,design/The-Packing-Charm
-49,The ArithmaTrap,crypto,Yasser,warmup,crypto/arithma-trap
-50,Egg Clue,crypto,Yasser,easy,crypto/Egg-clue
-51,The Forbidden Forest,crypto,Yasser,easy,crypto/Forbidden-Forest
-52,Wizard’s Chess,crypto,Yasser,medium,crypto/wizard-chess
-53,Parseltongue Backdoor,crypto,Yasser,warmup,crypto/Parseltongue-Backdoor
-54,The Trace,crypto,Yasser,medium,crypto/trace
-55,Chamber of Secrets,crypto,Yasser,medium,crypto/Chamber-of-Secrets
-56,vrai sahl,crypto,Yasser,hard,crypto/vrai-sahl
-57,Karkaroff's Curse,crypto,Yasser,easy,crypto/Karkaroffs-Curse
+36,Optimum,problem_solving,ihaveabananaandamafraidouseit,hard,problem_solving/Primos
+37,Circle of Shadows,problem_solving,hxuu,hard,problem_solving/circle-of-shadows
+38,Warding Misalignment,problem_solving,hxuu,easy,problem_solving/warding-misalignment
+39,The Forbidden Potion,problem_solving,hxuu,medium,problem_solving/the-forbidden-potion
+40,The Unseen Curse,problem_solving,hxuu,tough,problem_solving/the-unseen-curse
+41, Draught of Living Death page,design,Dahoun Manel,,design/Draught-of-Living-Death-page
+42,Lumos,design,Dahoun Manel,warmup,design/Lumos
+43,Clone Summoning,design,Mountassar,easy,design/Clone-Summoning
+44,Signum Revelio,design,Dahoun Manel,medium,design/Signum-Revelio
+45,Reparo,design,Dahoun Manel,easy,design/Reparo
+46,Crest of the College,design,Mountassar,hard,design/Crest-of-the-College
+47,Expecto Patronum,design,Dahoun Manel,medium,design/Expecto-Patronum
+48,Nox–Extinguishes light,design,Dahoun Manel,easy,design/Nox-Extinguishes-light
+49, The Writing’s on the Wall,design,Dahoun Manel,warmup,design/The-Writing’s-on-the-Wall
+50,The founding fathers,design,Mountassar,tough,design/The-founding-fathers
+51,The Packing Charm,design,Dahoun Manel,medium,design/The-Packing-Charm
+52,The ArithmaTrap,crypto,Yasser,warmup,crypto/arithma-trap
+53,Egg Clue,crypto,Yasser,easy,crypto/Egg-clue
+54,The Forbidden Forest,crypto,Yasser,easy,crypto/Forbidden-Forest
+55,Wizard’s Chess,crypto,Yasser,medium,crypto/wizard-chess
+56,Parseltongue Backdoor,crypto,Yasser,warmup,crypto/Parseltongue-Backdoor
+57,The Trace,crypto,Yasser,medium,crypto/trace
+58,Chamber of Secrets,crypto,Yasser,medium,crypto/Chamber-of-Secrets
+59,vrai sahl,crypto,Yasser,hard,crypto/vrai-sahl
+60,Karkaroff's Curse,crypto,Yasser,easy,crypto/Karkaroffs-Curse

@@ -1,3 +1,4 @@
 .ctf
 **/.private
 **/.public
+.env
