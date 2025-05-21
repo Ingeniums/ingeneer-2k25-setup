@@ -41,7 +41,7 @@ def load_challenge_info(file_path):
                 challenge_name = row.get('name')
                 challenge_id = row.get('id')
                 if challenge_name and challenge_id:
-                    name_to_id_map[challenge_name.strip()] = challenge_id.strip()
+                    name_to_id_map[challenge_name.strip()] = int(challenge_id.strip())
                 else:
                     print(f"Warning: Skipping row due to missing name or id: {row}")
     except FileNotFoundError:
@@ -62,81 +62,41 @@ def get_unsolved_challenges_from_ctfd(ctfd_base_url, token):
     unsolved_challenge_names = []
     
     headers = {
-        "Authorization": f"Bearer {token}", # Standard token authentication for CTFd
-        "User-Agent": "CTFd Unsolved Challenge Script" # Adding a User-Agent
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
     }
-    
-    response = None # Initialize response to None
 
     try:
         # Make the GET request with the authorization header
-        print(f"DEBUG: Attempting to GET: {challenges_api_url}")
-        print(f"DEBUG: Headers: {headers}")
-        response = requests.get(challenges_api_url, headers=headers, timeout=15) # Increased timeout slightly
-        
-        # --- Enhanced Debugging ---
-        print(f"DEBUG: Response Status Code: {response.status_code}")
-        print(f"DEBUG: Response Headers: {response.headers}")
-        # Print first 500 characters of the response text to see what we got
-        # Use try-except for response.text in case it's a non-text response or error during access
-        try:
-            response_text_snippet = response.text[:500] if response.text else "N/A or Empty"
-            print(f"DEBUG: Response Text (first 500 chars): {response_text_snippet}")
-        except Exception as te:
-            print(f"DEBUG: Error accessing response.text: {te}")
-        # --- End Enhanced Debugging ---
-
+        response = requests.get(challenges_api_url, headers=headers, timeout=10) # 10 second timeout
         response.raise_for_status()  # Raise an exception for HTTP errors (4xx or 5xx)
         
-        # If raise_for_status() didn't raise an error, we expect JSON
-        data = response.json() # This is where the original error likely occurs
-        
+        data = response.json()
         if data.get("success"):
             for challenge in data.get("data", []):
-                if challenge.get("solves") == 0: 
+                # The /api/v1/challenges endpoint (with auth) returns visible challenges.
+                # We filter for those with 0 solves.
+                # CTFd challenge state 'visible' means it's accessible.
+                # 'hidden' means it's not. The API should only return visible ones by default
+                # or based on user permissions tied to the token.
+                if challenge.get("solves") == 0: # Check if the challenge has no solves
                     challenge_name = challenge.get("name")
                     if challenge_name:
                         unsolved_challenge_names.append(challenge_name.strip())
             return unsolved_challenge_names
         else:
-            print(f"Error: CTFd API request was successful (status 2xx) but API indicated failure. Response: {data}")
+            print(f"Error: CTFd API request was not successful. Response: {data}")
             return None
             
-    except requests.exceptions.HTTPError as e_http:
-        # This catches errors raised by response.raise_for_status() (4xx, 5xx)
-        print(f"HTTP Error fetching challenges from CTFd API ({challenges_api_url}): {e_http}")
-        if response is not None:
-            print(f"HTTP Error - Response status: {response.status_code}")
-            # response.text should be available here
-            try:
-                print(f"HTTP Error - Response text: {response.text}")
-            except Exception as te:
-                print(f"HTTP Error - Error accessing response.text: {te}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching challenges from CTFd API ({challenges_api_url}): {e}")
+        if hasattr(e, 'response') and e.response is not None:
+            print(f"Response status: {e.response.status_code}")
+            print(f"Response text: {e.response.text}")
         return None
-    except requests.exceptions.RequestException as e_req:
-        # This catches other network errors (DNS failure, connection refused, timeout etc.)
-        print(f"Network/Request Error fetching challenges from CTFd API ({challenges_api_url}): {e_req}")
-        if response is not None and hasattr(response, 'status_code'): # Check if response object exists and has status_code
-             print(f"Network/Request Error - Response status (if available): {response.status_code}")
+    except ValueError: # Includes JSONDecodeError
+        print(f"Error: Could not decode JSON response from CTFd API ({challenges_api_url}).")
         return None
-    except ValueError as e_json: # Includes JSONDecodeError
-        print(f"JSON Decode Error: Could not decode JSON response from CTFd API ({challenges_api_url}). Error: {e_json}")
-        if response is not None:
-            print(f"JSON Decode Error - Response Status Code that led to this error: {response.status_code}")
-            try:
-                print(f"JSON Decode Error - Response Text that failed to parse (first 500 chars): {response.text[:500] if response.text else 'N/A or Empty'}")
-            except Exception as te:
-                 print(f"JSON Decode Error - Error accessing response.text: {te}")
-        else:
-            print("JSON Decode Error - 'response' object was not available to show text (request might have failed earlier).")
-        return None
-    except Exception as e_general:
-        # Catch any other unexpected errors
-        print(f"An unexpected error occurred in get_unsolved_challenges_from_ctfd: {e_general}")
-        if response is not None and hasattr(response, 'status_code'):
-             print(f"Unexpected Error - Response status (if available): {response.status_code}")
-        return None
-
 
 def main():
     """
@@ -156,17 +116,18 @@ def main():
     unsolved_ctfd_challenge_names = get_unsolved_challenges_from_ctfd(CTFD_URL, AUTH_TOKEN)
     
     if unsolved_ctfd_challenge_names is None:
-        print("Exiting: Failed to fetch or process challenges from CTFd.")
+        print("Exiting due to errors fetching challenges from CTFd or no challenges found.")
         return
 
     if not unsolved_ctfd_challenge_names:
-        print("No unsolved (and visible) challenges found on the CTFd instance, or no challenges matched after API processing.")
+        print("No unsolved (and visible) challenges found on the CTFd instance or API error during processing.")
         print(yaml.dump([], default_flow_style=False)) # Output empty YAML list
         return
         
     print(f"Found {len(unsolved_ctfd_challenge_names)} unsolved (and visible) challenges on CTFd: {unsolved_ctfd_challenge_names}")
 
     unsolved_ids_from_file = []
+    # found_names_in_file = set() # This set was not used for output, can be removed if not needed for other logic
 
     for unsolved_name in unsolved_ctfd_challenge_names:
         if unsolved_name in challenge_info_map:
@@ -174,12 +135,12 @@ def main():
         else:
             print(f"Warning: Unsolved CTFd challenge '{unsolved_name}' not found in the info file ('{INFO_FILE_PATH}').")
 
-    if not unsolved_ids_from_file:
-        print(f"No matching unsolved challenges (from the {len(unsolved_ctfd_challenge_names)} found on CTFd) were present in the info file.")
-    else:
-        print("\n--- IDs of Unsolved Challenges (matched from info file) ---")
-    
-    print(yaml.dump(unsolved_ids_from_file, default_flow_style=False))
+    out = {
+        "unsolved": unsolved_ids_from_file
+    }
+    with open("./out/unsolved.yaml", "w") as unsolved_file:
+        unsolved_file.write(yaml.dump(out))
 
 if __name__ == "__main__":
     main()
+

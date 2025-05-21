@@ -35,7 +35,7 @@ id,name,category,author,difficulty,path
 33,Head Curator,web,1nitramfs,easy,web/head_curator
 34,House Of Spells,web,1nitramfs,easy,web/house_of_spells
 35,Room of Requirement,web,1nitramfs,hard,web/room_of_requirement
-36,Optimum,problem_solving,ihaveabananaandamafraidouseit,hard,problem_solving/Primos
+36,Optimum,problem_solving,Tarek,hard,problem_solving/Optimum
 37,Circle of Shadows,problem_solving,hxuu,hard,problem_solving/circle-of-shadows
 38,Warding Misalignment,problem_solving,hxuu,easy,problem_solving/warding-misalignment
 39,The Forbidden Potion,problem_solving,hxuu,medium,problem_solving/the-forbidden-potion
@@ -60,3 +60,4 @@ id,name,category,author,difficulty,path
 58,Chamber of Secrets,crypto,Yasser,medium,crypto/Chamber-of-Secrets
 59,vrai sahl,crypto,Yasser,hard,crypto/vrai-sahl
 60,Karkaroff's Curse,crypto,Yasser,easy,crypto/Karkaroffs-Curse
+61,Primos,problem_solving,Tarek,hard,problem_solving/Primos

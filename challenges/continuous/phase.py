@@ -271,6 +271,7 @@ def check_and_start_containers(challenge_path, root_dir):
 
 def process_phase(phase_name, challenge_ids, challenges, root_dir, processed_for_visibility, drive_service=None, challenge_uploads_parent_folder_id=None):
     print(f"\nProcessing phase: {phase_name}")
+
     for challenge_id in challenge_ids:
         if challenge_id not in challenges:
             print(f"Challenge ID {challenge_id} (phase {phase_name}) not in CSV.")
@@ -322,11 +323,10 @@ def main():
     drive_service = None
     challenge_uploads_parent_folder_id = None # For challenge-specific submission folders
 
-    phases_config = load_yaml_phases(CONFIG)
     all_challenges_data = load_csv_challenges(CHALLENGES_CSV)
 
-    if not phases_config or not all_challenges_data:
-        print("Missing phases in config or challenges in CSV. Exiting.")
+    if not all_challenges_data:
+        print("Missing challenges in CSV. Exiting.")
         return
 
     if input("Hide all challenges before phase selection? (for clean state) [y/n]: ").lower() == 'y':
@@ -365,7 +365,24 @@ def main():
     else:
         print("Google Drive operations skipped.")
 
+    phases_config = load_yaml_phases(CONFIG)
+    if not phases_config:
+        print("Missing phases in config. Exiting.")
+        return
+
     selected_phase_key = select_phase(phases_config)
+    if input("Add unsolved challenges to selected phase? [y/n]").lower() == "y":
+        subprocess.run("./unsolved.py")
+        with open("./out/unsolved.yaml", "r") as unsolved_file:
+            unsolved = yaml.safe_load(unsolved_file.read())
+            phases_config[selected_phase_key] += unsolved["unsolved"]
+
+        out = {
+            "phases": phases_config
+        }
+        with open("./test.yaml", "w") as config_file:
+            config_file.write(yaml.dump(out))
+
     processed_ids_for_visibility = set()
 
     if selected_phase_key == "ALL_PHASES_SELECTED":
