@@ -46,6 +46,7 @@ def update_yaml_with_files(yaml_file, dir_path):
 
         data["tags"] = tags
     else:
+        data["value"] = 10
         data["type"] = "standard"
     data["category"] = CATEGORIES[data["category"]]
 
