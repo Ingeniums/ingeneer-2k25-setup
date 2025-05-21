@@ -16,13 +16,13 @@ if [ "$1" = "private" ]; then
         rm -r ./.ctf/
     fi
     cp -r $CTFCLI_CONFIG/.private ./.ctf
-    printf "CTFD_URL=http://127.0.0.1:8000\nAUTH_TOKEN=$PRIVATE_AUTH_TOKEN\nENVIRONMENT=$ENVIRONMENET" > ./.env
+    printf "CTFD_URL=http://127.0.0.1:8000\nAUTH_TOKEN=$PRIVATE_AUTH_TOKEN\nENVIRONMENT=$ENVIRONMENT" > ./.env
     echo "Changed to private configuration"
 else
     if [ -d .ctf ]; then
         rm -r ./.ctf/
     fi
     cp -r $CTFCLI_CONFIG/.public ./.ctf
-    printf "CTFD_URL=http://127.0.0.1:8001\nAUTH_TOKEN=$PUBLIC_AUTH_TOKEN\nENVIRONMENT=$ENVIRONMENET" > ./.env
+    printf "CTFD_URL=http://127.0.0.1:8001\nAUTH_TOKEN=$PUBLIC_AUTH_TOKEN\nENVIRONMENT=$ENVIRONMENT" > ./.env
     echo "Changed to public configuration"
 fi
