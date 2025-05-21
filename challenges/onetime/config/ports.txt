@@ -12,6 +12,6 @@ web/the-hidden-panel-2 30110
 networking/Break-a-rule 30078
 misc/the-hidden-panel 30062
 reverse/some-lang 30104
-problem_solving/Primos 30088
+problem_solving/Primos 30122
 misc/wand-of-airthmancy 30058
 reverse/Protego 30088

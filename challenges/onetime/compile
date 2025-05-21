@@ -21,7 +21,6 @@ TOUGH=400
 origin=$(pwd)
 category="$1"
 name="$2"
-port=30000
 
 # TODO: change to ""
 src="$(pwd)/../../../challenges"
@@ -39,12 +38,16 @@ if [ $out = "" ]; then
 fi
 
 echo "Reading Mappings...."
+max_port=30000
 declare -A port_mappings
 
 if [ -f ./config/ports.txt ]; then
     while read line; do
         name=$(echo $line | awk '{print $1}')
         port=$(echo $line | awk '{print $2}') 
+        if [ "$port" -gt "$max_port" ]; then
+            max_port=$port
+        fi
         port_mappings[$name]=$port
     done < ./config/ports.txt
 
@@ -79,8 +82,10 @@ process_compose () {
     if [ "$assigned_port" != "" ]; then
         port=$assigned_port
     else
-        echo $port
-        port_mappings["$category/$name"]=$port
+        echo $max_port
+        max_port=$(( max_port + 2 ))
+        port_mappings["$category/$name"]=$max_port
+        port=$max_port
     fi
 
     container_name=$(echo $name | tr 'A-Z' 'a-z')
@@ -143,7 +148,6 @@ process_challenge () {
 process () {
     process_compose
     process_challenge
-    port=$(( port + 2 ))
 }
 
 process_category () {
