@@ -4,6 +4,7 @@ crypto/wizard-chess 30006
 web/collision 30114
 web/house_of_spells 30118
 web/room_of_requirement 30120
+web/insanity 30126
 networking/After-Dark-Detour 30076
 crypto/arithma-trap 30000
 web/head_curator 30116
